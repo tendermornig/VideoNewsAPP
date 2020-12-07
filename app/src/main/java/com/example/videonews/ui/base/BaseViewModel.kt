@@ -15,7 +15,7 @@ abstract class BaseViewModel<Data, CacheData, Key> : ViewModel() {
         getData(it)
     }
 
-    abstract fun getData(param: Key): LiveData<Data>
+    abstract fun getData(param: Key): LiveData<Result<Data>>
 
     fun getDataList(param: Key) {
         requestLiveData.value = param

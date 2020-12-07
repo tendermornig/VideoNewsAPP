@@ -1,8 +1,6 @@
 package com.example.videonews.ui.base
 
-import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +10,9 @@ import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import com.example.videonews.R
-import java.lang.NullPointerException
+import com.example.videonews.utils.showToast
 
 abstract class BaseFragment : Fragment(), RequestLifecycle, BaseInit {
 
@@ -96,26 +95,13 @@ abstract class BaseFragment : Fragment(), RequestLifecycle, BaseInit {
         return view
     }
 
-    protected open fun setupViews() {
-//        loading = findViewById(R.id.loading)
-//        loadErrorView = findViewById(R.id.loadErrorView)
-//        badNetworkView = findViewById(R.id.badNetworkView)
-//        noContentView = findViewById(R.id.noContentView)
-        if (loadErrorView == null) {
-            Log.e(TAG, "loadErrorView is null")
-        }
-        if (badNetworkView == null) {
-            Log.e(TAG, "badNetworkView is null")
-        }
-    }
-
     /**
      * 当Activity中的加载内容服务器返回失败，通过此方法显示提示界面给用户。
      *
      * @param tip
      * 界面中的提示信息
      */
-    protected fun showLoadErrorView(tip: String = "加载数据失败") {
+    private fun showLoadErrorView(tip: String = "加载数据失败") {
         loadFailed(tip)
         loadErrorView?.let {
             val loadErrorText = it.findViewById<TextView>(R.id.tvLoadError)
@@ -131,7 +117,7 @@ abstract class BaseFragment : Fragment(), RequestLifecycle, BaseInit {
      * @param listener
      * 重新加载点击事件回调
      */
-    protected fun showBadNetworkView(listener: View.OnClickListener) {
+    private fun showBadNetworkView(listener: View.OnClickListener) {
         loadFinished()
         badNetworkView?.let {
             it.visibility = View.VISIBLE
@@ -155,6 +141,34 @@ abstract class BaseFragment : Fragment(), RequestLifecycle, BaseInit {
     }
 
     /**
+     * 设置 LiveData 的状态，根据不同状态显示不同页面
+     *
+     * @param dataLiveData LiveData
+     * @param onDataStatus 数据回调进行使用
+     */
+    fun <T> setDataStatus(
+        dataLiveData: LiveData<Result<T>>,
+        onBadNetwork: () -> Unit = {},
+        onDataStatus: (T) -> Unit
+    ) {
+        dataLiveData.observe(this) {
+            if (it.isSuccess) {
+                val dataList = it.getOrNull()
+                if (dataList != null) {
+                    loadFinished()
+                    onDataStatus(dataList)
+                } else {
+                    showLoadErrorView()
+                }
+            } else {
+                getString(R.string.bad_network_view_tip).showToast()
+                showBadNetworkView { initData() }
+                onBadNetwork.invoke()
+            }
+        }
+    }
+
+    /**
      * 将load error view进行隐藏。
      * 将bad network view进行隐藏。
      * 将no content view进行隐藏。
@@ -166,7 +180,8 @@ abstract class BaseFragment : Fragment(), RequestLifecycle, BaseInit {
     }
 
 
-    @CallSuper /*@CallSuper 注解：表示任何重写方法都应该调用此方法*/
+    @CallSuper
+    /*@CallSuper 注解：表示任何重写方法都应该调用此方法*/
     override fun startLoading() {
         hideLce()
         loading?.visibility = View.VISIBLE

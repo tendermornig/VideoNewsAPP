@@ -169,7 +169,7 @@ abstract class BaseActivity : AppCompatActivity(), RequestLifecycle, BaseInit {
     }
 
     @CallSuper
-/*@CallSuper 注解：表示任何重写方法都应该调用此方法*/
+    /*@CallSuper 注解：表示任何重写方法都应该调用此方法*/
     override fun startLoading() {
         hideLce()
         loading?.visibility = View.VISIBLE
