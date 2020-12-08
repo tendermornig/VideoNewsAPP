@@ -1,5 +1,6 @@
 package com.example.videonews.logic.network
 
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,7 +14,11 @@ object VideoNewsNetwork {
 
     private val userService = ServiceCreator.create<UserService>()
 
-    suspend fun userLogin(loginParam: Map<String, String>) = userService.userLogin(loginParam).await()
+    suspend fun userLogin(loginParam: Map<String, String>) =
+        userService.userLogin(loginParam).await()
+
+    suspend fun userRegister(registerParam: Map<String, String>) =
+        userService.userRegister(registerParam).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {

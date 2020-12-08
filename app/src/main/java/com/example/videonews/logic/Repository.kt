@@ -13,13 +13,33 @@ object Repository {
 
     fun userLogin(loginParam: Map<String, String>) = fire(Dispatchers.IO) {
         val loginResult = VideoNewsNetwork.userLogin(loginParam)
-        Log.d(TAG, "userLogin: ")
         if ("success" == loginResult.msg && 200 == loginResult.code) {
             Result.success(loginResult.data)
         } else {
             Result.failure(
                 RuntimeException(
                     "response status msg is ${loginResult.msg} code is ${loginResult.code}"
+                )
+            )
+        }
+    }
+
+    fun userRegister(registerParam: Map<String, String>) = fire(Dispatchers.IO) {
+        val registerResult = VideoNewsNetwork.userRegister(registerParam)
+        if ("success" == registerResult.msg) {
+            when (registerResult.code) {
+                200 -> Result.success(true)
+                401 -> Result.success(false)
+                else -> Result.failure(
+                    RuntimeException(
+                        "response status msg is ${registerResult.msg} code is ${registerResult.code}"
+                    )
+                )
+            }
+        } else {
+            Result.failure(
+                RuntimeException(
+                    "response status msg is ${registerResult.msg} code is ${registerResult.code}"
                 )
             )
         }
@@ -32,7 +52,7 @@ object Repository {
         val result = try {
             block()
         } catch (e: Exception) {
-            Result.failure(e)
+            Result.failure<T>(e)
         }
         emit(result)
     }

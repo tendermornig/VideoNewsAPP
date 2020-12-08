@@ -9,4 +9,7 @@ interface UserService {
 
     @POST("user/login")
     fun userLogin(@Body loginParam: Map<String, String>): Call<BaseResponse<String>>
+
+    @POST("user/register")
+    fun userRegister(@Body registerParam: Map<String, String>): Call<BaseResponse<String>>
 }

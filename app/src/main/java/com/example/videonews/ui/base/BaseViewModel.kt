@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 
 abstract class BaseViewModel<Data, CacheData, Key> : ViewModel() {
 
-    val dataList = ArrayList<CacheData>()
+    val cacheData = ArrayList<CacheData>()
 
     private val requestLiveData = MutableLiveData<Key>()
 
@@ -17,7 +17,7 @@ abstract class BaseViewModel<Data, CacheData, Key> : ViewModel() {
 
     abstract fun getData(param: Key): LiveData<Result<Data>>
 
-    fun getDataList(param: Key) {
+    fun setRequestValue(param: Key) {
         requestLiveData.value = param
     }
 }

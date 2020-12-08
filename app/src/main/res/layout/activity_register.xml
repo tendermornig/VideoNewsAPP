@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.LoginActivity">
+    tools:context=".ui.user.RegisterActivity">
 
     <ImageView
         android:layout_width="0dp"
@@ -37,9 +37,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="60dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:src="@mipmap/account"
-                app:layout_constraintBottom_toTopOf="@+id/divider"
+                app:layout_constraintBottom_toTopOf="@+id/dividerOne"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
@@ -49,7 +49,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="60dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
                 android:background="@null"
@@ -57,34 +56,31 @@
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/divider"
+                app:layout_constraintBottom_toTopOf="@+id/dividerOne"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imgAccount"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/imgAccount" />
 
             <View
-                android:id="@+id/divider"
+                android:id="@+id/dividerOne"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
                 android:background="#e8e7e7"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/etPwd"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@+id/imgPwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="60dp"
                 android:src="@mipmap/pwd"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
 
             <EditText
@@ -92,9 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="60dp"
                 android:background="@null"
                 android:hint="@string/et_pws_hint"
                 android:importantForAutofill="no"
@@ -102,23 +96,62 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imgPwd"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/dividerTwo"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:background="#e8e7e7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPwd" />
+
+            <ImageView
+                android:id="@+id/imgTwoPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="60dp"
+                android:src="@mipmap/lock"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dividerTwo"
+                tools:ignore="ContentDescription" />
+
+            <EditText
+                android:id="@+id/etTwoPwd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:background="@null"
+                android:hint="@string/et_two_pws_hint"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/etPwd"
+                app:layout_constraintTop_toBottomOf="@+id/dividerTwo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/shape_big_btn"
-        android:text="@string/login_text"
+        android:text="@string/register_text"
         android:textSize="32sp"
-        app:backgroundTint="#4dbe66"
+        app:backgroundTint="#b1525e"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

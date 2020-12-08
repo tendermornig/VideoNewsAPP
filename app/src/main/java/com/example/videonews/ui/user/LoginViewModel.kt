@@ -11,6 +11,4 @@ class LoginViewModel : BaseViewModel<String, String, Map<String, String>>() {
     }
 
     fun saveUserToken(token: String) = Repository.saveUserToken(token)
-
-    fun getUserToken() = Repository.getUserToken()
 }
