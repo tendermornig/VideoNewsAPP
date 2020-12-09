@@ -1,6 +1,5 @@
 package com.example.videonews.logic
 
-import android.util.Log
 import androidx.lifecycle.liveData
 import com.example.videonews.logic.dao.UserDao
 import com.example.videonews.logic.network.VideoNewsNetwork

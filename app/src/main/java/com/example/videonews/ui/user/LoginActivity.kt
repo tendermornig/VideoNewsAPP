@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.R
+import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
@@ -39,6 +40,7 @@ class LoginActivity : BaseActivity() {
         setDataStatus(viewModel.dataLiveData) {
             if (it != null && "" != it) {
                 viewModel.saveUserToken(it)
+                NavigationActivity.startNavigationActivity(this)
                 "登录成功".showToast()
             } else getString(R.string.login_error_text).showToast()
         }
