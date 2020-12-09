@@ -10,7 +10,6 @@
         android:id="@+id/vpNav"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toTopOf="@+id/division"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

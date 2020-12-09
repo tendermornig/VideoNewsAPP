@@ -2,6 +2,8 @@ package com.example.videonews.ui
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.videonews.R
 import com.example.videonews.ui.base.BaseActivity
@@ -15,6 +17,7 @@ class NavigationActivity : BaseActivity() {
 
     override fun getLayoutId() = R.layout.activity_navigation
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun initView() {
         vpNav.isUserInputEnabled = false
     }

@@ -1,10 +1,8 @@
 package com.example.videonews.logic.network
 
-import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.RuntimeException
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -14,11 +12,16 @@ object VideoNewsNetwork {
 
     private val userService = ServiceCreator.create<UserService>()
 
+    private val videoNewsListService = ServiceCreator.create<VideoNewsListService>()
+
     suspend fun userLogin(loginParam: Map<String, String>) =
         userService.userLogin(loginParam).await()
 
     suspend fun userRegister(registerParam: Map<String, String>) =
         userService.userRegister(registerParam).await()
+
+    suspend fun getCategory(token: String) =
+        videoNewsListService.getCategory(token).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {

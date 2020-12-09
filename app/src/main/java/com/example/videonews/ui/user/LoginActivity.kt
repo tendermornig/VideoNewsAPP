@@ -2,14 +2,12 @@ package com.example.videonews.ui.user
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.R
 import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity() {
@@ -41,6 +39,7 @@ class LoginActivity : BaseActivity() {
             if (it != null && "" != it) {
                 viewModel.saveUserToken(it)
                 NavigationActivity.startNavigationActivity(this)
+                finish()
                 "登录成功".showToast()
             } else getString(R.string.login_error_text).showToast()
         }

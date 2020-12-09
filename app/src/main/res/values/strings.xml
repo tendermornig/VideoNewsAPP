@@ -13,4 +13,5 @@
     <string name="nav_video_text">视频</string>
     <string name="nav_news_text">资讯</string>
     <string name="nav_user_text">我的</string>
+    <string name="et_search_hint">搜索你喜欢的视频</string>
 </resources>

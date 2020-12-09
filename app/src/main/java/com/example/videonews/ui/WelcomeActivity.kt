@@ -4,7 +4,6 @@ import com.example.videonews.R
 import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.ui.user.LoginActivity
 import com.example.videonews.ui.user.RegisterActivity
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : BaseActivity() {
@@ -16,9 +15,11 @@ class WelcomeActivity : BaseActivity() {
     override fun initView() {
         btnToLogin.setOnClickListener {
             LoginActivity.startLoginActivity(this)
+            finish()
         }
         btnToRegister.setOnClickListener {
             RegisterActivity.startRegisterActivity(this)
+            finish()
         }
     }
 

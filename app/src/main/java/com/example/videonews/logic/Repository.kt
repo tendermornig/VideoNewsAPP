@@ -44,6 +44,26 @@ object Repository {
         }
     }
 
+    fun getCategory(token: String) = fire {
+        val categoryResult = VideoNewsNetwork.getCategory(token)
+        if ("success" == categoryResult.msg) {
+            when (categoryResult.code) {
+                200 -> Result.success(categoryResult.data)
+                else -> Result.failure(
+                    RuntimeException(
+                        "response status msg is ${categoryResult.msg} code is ${categoryResult.code}"
+                    )
+                )
+            }
+        } else {
+            Result.failure(
+                RuntimeException(
+                    "response status msg is ${categoryResult.msg} code is ${categoryResult.code}"
+                )
+            )
+        }
+    }
+
     private fun <T> fire(
         context: CoroutineContext = Dispatchers.IO,
         block: suspend () -> Result<T>
