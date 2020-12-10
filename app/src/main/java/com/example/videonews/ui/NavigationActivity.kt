@@ -7,9 +7,9 @@ import androidx.annotation.RequiresApi
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.videonews.R
 import com.example.videonews.ui.base.BaseActivity
-import com.example.videonews.ui.videonews.NewsFragment
-import com.example.videonews.ui.videonews.UserFragment
-import com.example.videonews.ui.videonews.VideoFragment
+import com.example.videonews.ui.news.NewsFragment
+import com.example.videonews.ui.news.UserFragment
+import com.example.videonews.ui.video.VideoFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_navigation.*
 
@@ -20,9 +20,6 @@ class NavigationActivity : BaseActivity() {
     @RequiresApi(Build.VERSION_CODES.R)
     override fun initView() {
         vpNav.isUserInputEnabled = false
-    }
-
-    override fun initData() {
         val icons = listOf(R.mipmap.video_icon, R.mipmap.news_icon, R.mipmap.user_icon)
         val titles = listOf(R.string.nav_video_text, R.string.nav_news_text, R.string.nav_user_text)
         val fragments = listOf({ VideoFragment.newInstance() },
@@ -40,6 +37,8 @@ class NavigationActivity : BaseActivity() {
             tab.setText(titles[position])
         }.attach()
     }
+
+    override fun initData() {}
 
     companion object {
 

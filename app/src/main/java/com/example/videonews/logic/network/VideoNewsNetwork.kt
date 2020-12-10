@@ -23,6 +23,9 @@ object VideoNewsNetwork {
     suspend fun getCategory(token: String) =
         videoNewsListService.getCategory(token).await()
 
+    suspend fun getVideoList(token: String, category: Int) =
+        videoNewsListService.getVideoList(token, category).await()
+
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T> {

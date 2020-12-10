@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import com.example.videonews.R
+import com.example.videonews.ui.user.LoginActivity
 import com.example.videonews.utils.showToast
 
 abstract class BaseFragment : Fragment(), BaseInit {
@@ -44,6 +45,12 @@ abstract class BaseFragment : Fragment(), BaseInit {
                 it.exceptionOrNull()?.printStackTrace()
             }
         }
+    }
+
+    fun toReLogin(msg: String) {
+        LoginActivity.startLoginActivity(context!!)
+        ActivityCollector.finishAll()
+        msg.showToast()
     }
 
     companion object {

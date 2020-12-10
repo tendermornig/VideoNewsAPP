@@ -6,9 +6,8 @@ import com.example.videonews.ui.base.BaseViewModel
 
 class LoginViewModel : BaseViewModel<String, String, Map<String, String>>() {
 
-    override fun getData(param: Map<String, String>): LiveData<Result<String>> {
-        return Repository.userLogin(param)
-    }
+    override fun getData(param: Map<String, String>): LiveData<Result<String>> =
+        Repository.userLogin(param)
 
     fun saveUserToken(token: String) = Repository.saveUserToken(token)
 }

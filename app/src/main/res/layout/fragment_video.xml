@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.videonews.VideoFragment">
+    tools:context=".ui.video.VideoFragment">
 
     <FrameLayout
         android:id="@+id/fl"
@@ -41,8 +41,8 @@
                 android:layout_marginEnd="8dp"
                 android:background="@null"
                 android:hint="@string/et_search_hint"
-                android:inputType="text"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -55,7 +55,13 @@
         android:background="#344261"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl" />
+        app:layout_constraintTop_toBottomOf="@+id/fl"
+        app:tabIndicatorColor="#fdf299"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="#fdf299"
+        app:tabTextColor="@color/white" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpVideo"

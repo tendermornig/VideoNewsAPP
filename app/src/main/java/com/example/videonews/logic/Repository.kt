@@ -47,18 +47,26 @@ object Repository {
     fun getCategory(token: String) = fire {
         val categoryResult = VideoNewsNetwork.getCategory(token)
         if ("success" == categoryResult.msg) {
-            when (categoryResult.code) {
-                200 -> Result.success(categoryResult.data)
-                else -> Result.failure(
-                    RuntimeException(
-                        "response status msg is ${categoryResult.msg} code is ${categoryResult.code}"
-                    )
-                )
-            }
+            Result.success(categoryResult)
         } else {
             Result.failure(
                 RuntimeException(
                     "response status msg is ${categoryResult.msg} code is ${categoryResult.code}"
+                )
+            )
+        }
+    }
+
+    fun getVideoList(category: Int) = fire {
+        val videoListResult = getUserToken()?.let {
+            VideoNewsNetwork.getVideoList(it, category)
+        }
+        if ("success" == videoListResult?.msg) {
+            Result.success(videoListResult)
+        } else {
+            Result.failure(
+                RuntimeException(
+                    "response status msg is ${videoListResult?.msg} code is ${videoListResult?.code}"
                 )
             )
         }
@@ -71,7 +79,7 @@ object Repository {
         val result = try {
             block()
         } catch (e: Exception) {
-            Result.failure<T>(e)
+            Result.failure(e)
         }
         emit(result)
     }

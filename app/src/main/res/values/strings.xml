@@ -14,4 +14,8 @@
     <string name="nav_news_text">资讯</string>
     <string name="nav_user_text">我的</string>
     <string name="et_search_hint">搜索你喜欢的视频</string>
+    <string name="head_img">头像图片</string>
+    <string name="collect_img">收藏图标</string>
+    <string name="comment_img">评论图标</string>
+    <string name="likes_img">点赞图标</string>
 </resources>

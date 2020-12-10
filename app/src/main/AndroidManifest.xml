@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoNews"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.NavigationActivity"/>
+        <activity android:name=".ui.NavigationActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ui.user.RegisterActivity" />
         <activity android:name=".ui.user.LoginActivity" />
         <activity android:name=".ui.WelcomeActivity">

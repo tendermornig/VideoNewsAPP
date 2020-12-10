@@ -1,3 +1,5 @@
 package com.example.videonews.logic.model
 
-data class CategoryModel(val categoryId: Int, val categoryName: String)
+import java.io.Serializable
+
+data class CategoryModel(var categoryId: Int, var categoryName: String) : Serializable
