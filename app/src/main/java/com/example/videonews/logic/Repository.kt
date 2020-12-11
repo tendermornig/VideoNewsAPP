@@ -58,15 +58,13 @@ object Repository {
     }
 
     fun getVideoList(category: Int) = fire {
-        val videoListResult = getUserToken()?.let {
-            VideoNewsNetwork.getVideoList(it, category)
-        }
-        if ("success" == videoListResult?.msg) {
+        val videoListResult = VideoNewsNetwork.getVideoList(getUserToken(), category)
+        if ("success" == videoListResult.msg) {
             Result.success(videoListResult)
         } else {
             Result.failure(
                 RuntimeException(
-                    "response status msg is ${videoListResult?.msg} code is ${videoListResult?.code}"
+                    "response status msg is ${videoListResult.msg} code is ${videoListResult.code}"
                 )
             )
         }

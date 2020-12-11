@@ -26,7 +26,7 @@ class WelcomeActivity : BaseActivity() {
     override fun initView() {}
 
     override fun initData() {
-        if (viewModel.getUserToken() != null && "" != viewModel.getUserToken()) {
+        if ("" != viewModel.getUserToken()) {
             NavigationActivity.startNavigationActivity(this)
             finish()
         }

@@ -37,9 +37,7 @@ class VideoFragment : BaseFragment() {
     }
 
     override fun initData() {
-        viewModel.getUserToken()?.let {
-            viewModel.setRequestValue(it)
-        }?: toReLogin("用户token为空")
+        viewModel.setRequestValue(viewModel.getUserToken())
         setDataStatus(viewModel.dataLiveData) {
             if (it != null && it.code != 402) {
                 viewModel.cacheData.clear()
