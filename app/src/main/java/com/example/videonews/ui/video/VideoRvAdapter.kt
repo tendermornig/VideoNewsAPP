@@ -32,6 +32,8 @@ class VideoRvAdapter(
         holder.tvAuthor.text = value.author
         Glide.with(context).load(value.coverUrl).into(holder.ivVideoCover)
         holder.tvComment.text = "${value.commentNum}"
+        holder.ivCollect.setImageResource(R.mipmap.collect)
+        holder.ivLikes.setImageResource(R.mipmap.likes)
         holder.tvCollect.text = "${value.collectNum}"
         holder.tvLikes.text = "${value.likeNum}"
     }

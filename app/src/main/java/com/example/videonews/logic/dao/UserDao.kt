@@ -16,4 +16,8 @@ object UserDao {
     }
 
     fun getUserToken() = sharedPreferences().getString("userToken", "")
+
+    fun clearUserToken() = sharedPreferences().edit {
+        clear()
+    }
 }

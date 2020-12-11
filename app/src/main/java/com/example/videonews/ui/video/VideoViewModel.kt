@@ -13,4 +13,6 @@ class VideoViewModel :
         Repository.getCategory(param)
 
     fun getUserToken() = Repository.getUserToken()
+
+    fun clearUserToken() = Repository.clearUserToken()
 }

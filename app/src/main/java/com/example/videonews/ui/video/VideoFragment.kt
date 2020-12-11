@@ -46,6 +46,7 @@ class VideoFragment : BaseFragment() {
                 viewModel.cacheData.addAll(it.data)
                 adapter.notifyDataSetChanged()
             } else {
+                viewModel.clearUserToken()
                 toReLogin("用户token已过期")
             }
         }

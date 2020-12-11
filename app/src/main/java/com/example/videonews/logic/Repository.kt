@@ -87,4 +87,6 @@ object Repository {
     fun saveUserToken(token: String) = UserDao.saveUserToken(token)
 
     fun getUserToken() = UserDao.getUserToken()
+
+    fun clearUserToken() = UserDao.clearUserToken()
 }
