@@ -14,10 +14,10 @@
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/head_img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/head_img" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -46,17 +46,24 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:text="@tools:sample/first_names" />
 
-    <ImageView
-        android:id="@+id/ivVideoCover"
+    <FrameLayout
+        android:id="@+id/flPlayerContainer"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHead"
-        tools:srcCompat="@mipmap/default_bg" />
+        app:layout_constraintTop_toBottomOf="@+id/ivHead">
+
+        <com.dueeeke.videocontroller.component.PrepareView
+            android:id="@+id/pvPrepare"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/ivCollect"
@@ -66,34 +73,34 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/collect_img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivVideoCover"
-        tools:srcCompat="@mipmap/collect"
-        android:contentDescription="@string/collect_img" />
+        app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
+        tools:srcCompat="@mipmap/collect" />
 
     <ImageView
         android:id="@+id/ivComment"
         android:layout_width="20dp"
         android:layout_height="18dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/comment_img"
         android:src="@mipmap/comment"
         app:layout_constraintEnd_toStartOf="@+id/ivCollect"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivVideoCover"
-        android:contentDescription="@string/comment_img" />
+        app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer" />
 
     <ImageView
         android:id="@+id/ivLikes"
         android:layout_width="20dp"
         android:layout_height="18dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/likes_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivCollect"
-        app:layout_constraintTop_toBottomOf="@+id/ivVideoCover"
-        tools:srcCompat="@mipmap/likes"
-        android:contentDescription="@string/likes_img" />
+        app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
+        tools:srcCompat="@mipmap/likes" />
 
     <TextView
         android:id="@+id/tvCollect"
@@ -105,7 +112,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivCollect"
-        app:layout_constraintTop_toBottomOf="@+id/ivVideoCover"
+        app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
         tools:text="20" />
 
     <TextView
@@ -116,7 +123,7 @@
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/ivComment"
-        app:layout_constraintTop_toBottomOf="@+id/ivVideoCover"
+        app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
         tools:text="123" />
 
     <TextView
@@ -127,7 +134,7 @@
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/ivLikes"
-        app:layout_constraintTop_toBottomOf="@+id/ivVideoCover"
+        app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
         tools:text="20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

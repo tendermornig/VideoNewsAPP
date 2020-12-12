@@ -6,18 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import com.dueeeke.videoplayer.player.VideoViewManager
 import com.example.videonews.R
 import com.example.videonews.ui.welcome.WelcomeActivity
 import com.example.videonews.utils.showToast
 
 abstract class BaseFragment : Fragment(), BaseInit {
 
+    private var mRootView: View? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(getLayoutId(), container, false)
+        if (mRootView == null) {
+            mRootView = inflater.inflate(getLayoutId(), container, false)
+
+        }
+        return mRootView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -53,7 +59,15 @@ abstract class BaseFragment : Fragment(), BaseInit {
         msg.showToast()
     }
 
+    /**
+     * 子类可通过此方法直接拿到VideoViewManager
+     */
+    protected fun getVideoViewManager(): VideoViewManager? {
+        return VideoViewManager.instance()
+    }
+
     companion object {
+        const val TAG_LIST = "list"
         private const val TAG = "BaseFragment"
     }
 }
