@@ -5,4 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.news.NewsFragment">
 
+    <TextView
+        android:textSize="32sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </FrameLayout>

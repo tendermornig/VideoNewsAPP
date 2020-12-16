@@ -1,7 +1,10 @@
 package com.example.videonews.ui.video
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.videonews.R
 import com.example.videonews.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_video_list.*
@@ -21,6 +24,17 @@ class VideoListFragment : BaseFragment() {
     override fun initView() {
         adapter = VideoRvAdapter(viewModel.cacheData, context!!)
         rlVideoList.adapter = adapter
+        rlVideoList.addOnChildAttachStateChangeListener(object :
+            RecyclerView.OnChildAttachStateChangeListener {
+            override fun onChildViewAttachedToWindow(view: View) {
+
+            }
+
+            override fun onChildViewDetachedFromWindow(view: View) {
+                Log.d(TAG, "onChildViewDetachedFromWindow: ")
+            }
+
+        })
     }
 
     override fun initData() {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/tab_video"
+        android:title="@string/nav_video_text"
+        android:icon="@mipmap/video_icon" />
+    <item android:id="@+id/tab_news"
+        android:title="@string/nav_news_text"
+        android:icon="@mipmap/news_icon" />
+    <item android:id="@+id/tab_user"
+        android:title="@string/nav_user_text"
+        android:icon="@mipmap/user_icon" />
+</menu>

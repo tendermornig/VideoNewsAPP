@@ -34,7 +34,6 @@ android {
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
@@ -47,6 +46,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-java:3.2.6'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-ui:3.2.6'
+    implementation 'com.github.dueeeke.dkplayer:player-exo:3.2.6'
+    implementation 'com.github.dueeeke.dkplayer:player-ijk:3.2.6'
+    implementation 'com.github.dueeeke.dkplayer:videocache:3.2.6'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     testImplementation 'junit:junit:4.13.1'

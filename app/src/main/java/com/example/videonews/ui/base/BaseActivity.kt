@@ -4,10 +4,9 @@ import android.app.Activity
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsets
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updatePadding
 import androidx.lifecycle.LiveData
+import com.dueeeke.videoplayer.player.VideoViewManager
 import com.example.videonews.R
 import com.example.videonews.utils.showToast
 import java.lang.ref.WeakReference
@@ -60,18 +59,24 @@ abstract class BaseActivity : AppCompatActivity(), BaseInit {
      */
     private fun transparentStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.setDecorFitsSystemWindows(false)//api大于30时使用此方法让布局内容显示到状态栏后
-            //解决当布局可在系统状态栏和导航栏后绘制时控件或布局被遮挡的问题
-            window.decorView.setOnApplyWindowInsetsListener { v, insets ->
-                v.updatePadding(bottom = insets.getInsets(WindowInsets.Type.systemBars()).bottom)
-                insets
-            }
+            //api大于30时使用此方法让布局内容显示到状态栏后
+            window.setDecorFitsSystemWindows(false)
+//            //解决当布局可在系统状态栏和导航栏后绘制时控件或布局被遮挡的问题
+//            window.decorView.setOnApplyWindowInsetsListener { v, insets ->
+//                v.updatePadding(bottom = insets.getInsets(WindowInsets.Type.systemBars()).bottom)
+//                insets
+//            }
         } else {
             val decorView = window.decorView
             decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
     }
+
+    /**
+     * 子类可通过此方法直接拿到VideoViewManager
+     */
+    protected fun getVideoViewManager() = VideoViewManager.instance()!!
 
     companion object {
         private const val TAG = "BaseActivity"

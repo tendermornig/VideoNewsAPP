@@ -6,33 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.NavigationActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpNav"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/flContent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/division"
+        app:layout_constraintBottom_toTopOf="@+id/bnv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/division"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/wall"
-        app:layout_constraintBottom_toTopOf="@+id/tlNav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tlNav"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemBackground="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:tabBackground="@android:color/transparent"
-        app:tabIndicatorHeight="0dp"
-        app:tabRippleColor="@android:color/transparent" />
+        app:menu="@menu/navigation_items" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.videonews.R
+import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_video.*
@@ -22,6 +23,7 @@ class VideoFragment : BaseFragment() {
     override fun getLayoutId() = R.layout.fragment_video
 
     override fun initView() {
+        fl.fitsSystemWindows = true
         adapter = object :
             FragmentStateAdapter(activity!!.supportFragmentManager, lifecycle) {
             override fun getItemCount() = viewModel.cacheData.size
@@ -48,6 +50,11 @@ class VideoFragment : BaseFragment() {
                 toReLogin("用户token已过期")
             }
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        getVideoViewManager().releaseByTag(NavigationActivity.LIST)
     }
 
     companion object {
