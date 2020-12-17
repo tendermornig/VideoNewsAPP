@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_navigation.*
 
 class NavigationActivity : BaseActivity() {
 
-    var mCurrentIndex = 0
     private val menuId = listOf(R.id.tab_video, R.id.tab_news, R.id.tab_user)
     private val mFragments =
         listOf(VideoFragment.newInstance(), NewsFragment.newInstance(), UserFragment.newInstance())
@@ -66,6 +65,8 @@ class NavigationActivity : BaseActivity() {
 
         //列表播放
         const val LIST = "list"
+
+        var mCurrentIndex = 0
 
         fun startNavigationActivity(context: Context) {
             val intent = Intent(context, NavigationActivity::class.java)

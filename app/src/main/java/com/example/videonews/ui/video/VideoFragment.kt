@@ -23,9 +23,10 @@ class VideoFragment : BaseFragment() {
     override fun getLayoutId() = R.layout.fragment_video
 
     override fun initView() {
+
         fl.fitsSystemWindows = true
         adapter = object :
-            FragmentStateAdapter(activity!!.supportFragmentManager, lifecycle) {
+            FragmentStateAdapter(childFragmentManager, lifecycle) {
             override fun getItemCount() = viewModel.cacheData.size
 
             override fun createFragment(position: Int): Fragment {
