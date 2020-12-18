@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
-import com.dueeeke.videoplayer.player.VideoViewManager
 import com.example.videonews.R
 import com.example.videonews.ui.welcome.WelcomeActivity
 import com.example.videonews.utils.showToast
@@ -57,7 +56,9 @@ abstract class BaseFragment : Fragment(), BaseInit {
     /**
      * 子类可通过此方法直接拿到VideoViewManager
      */
-    protected open fun getVideoViewManager() = VideoViewManager.instance()!!
+    protected fun getVideoViewManager(): VideoViewManager? {
+        return VideoViewManager.instance()
+    }
 
     companion object {
         private const val TAG = "BaseFragment"
