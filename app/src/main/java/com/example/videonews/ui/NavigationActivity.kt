@@ -60,6 +60,13 @@ class NavigationActivity : BaseActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        if (getVideoViewManager().onBackPress(LIST)) {
+            return
+        }
+        super.onBackPressed()
+    }
+
     companion object {
 
         private const val TAG = "NavigationActivity"
