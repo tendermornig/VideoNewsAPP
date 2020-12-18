@@ -55,8 +55,6 @@ class VideoRvAdapter(
         this.onItemClickListener = onItemClickListener
     }
 
-    fun getli() = onItemClickListener
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {

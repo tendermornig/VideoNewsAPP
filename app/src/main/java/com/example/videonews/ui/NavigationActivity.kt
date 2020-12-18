@@ -23,6 +23,7 @@ class NavigationActivity : BaseActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.flContent, mFragments[0])
             .commitAllowingStateLoss()
+
     }
 
     override fun initData() {

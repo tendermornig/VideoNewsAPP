@@ -46,8 +46,7 @@ class VideoListFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         if (mLastPos == -1) return
-        if (NavigationActivity.mCurrentIndex != 1) return
-        //恢复上次播放的位置
+        if (NavigationActivity.mCurrentIndex != 0) return
         //恢复上次播放的位置
         startPlay(mLastPos)
     }
@@ -82,9 +81,10 @@ class VideoListFragment : BaseFragment() {
     private fun initVideoView() {
         mVideoView = VideoView(context!!)
         mVideoView.setOnStateChangeListener(object : VideoView.SimpleOnStateChangeListener() {
-            override fun onPlayerStateChanged(playerState: Int) {
+            override fun onPlayStateChanged(playState: Int) {
+                super.onPlayStateChanged(playState)
                 //监听VideoViewManager释放，重置状态
-                if (playerState == VideoView.STATE_IDLE) {
+                if (playState == VideoView.STATE_IDLE) {
                     removeViewFormParent(mVideoView)
                     mLastPos = mCurPos
                     mCurPos = -1
@@ -115,7 +115,7 @@ class VideoListFragment : BaseFragment() {
                 adapter.notifyItemRangeChanged(adapter.lastSize, viewModel.cacheData.size)
                 adapter.lastSize = viewModel.cacheData.size
             } else {
-                toReLogin("用户token已过期")
+                toReLogin("用户登录已过期")
             }
         }
     }

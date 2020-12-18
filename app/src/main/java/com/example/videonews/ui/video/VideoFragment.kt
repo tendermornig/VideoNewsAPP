@@ -1,5 +1,6 @@
 package com.example.videonews.ui.video
 
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -48,8 +49,17 @@ class VideoFragment : BaseFragment() {
                 adapter.notifyDataSetChanged()
             } else {
                 viewModel.clearUserToken()
-                toReLogin("用户token已过期")
+                toReLogin("用户登录已过期")
             }
+        }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden) {
+            vpVideo.visibility = View.GONE
+        } else {
+            vpVideo.visibility = View.VISIBLE
         }
     }
 
@@ -59,6 +69,9 @@ class VideoFragment : BaseFragment() {
     }
 
     companion object {
+
+        private const val TAG = "VideoFragment"
+
         @JvmStatic
         fun newInstance() =
             VideoFragment().apply {
