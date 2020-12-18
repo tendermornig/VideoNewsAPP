@@ -77,7 +77,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
-        tools:srcCompat="@mipmap/collect" />
+        tools:srcCompat="@mipmap/collect"
+        android:contentDescription="@string/collect_img" />
 
     <ImageView
         android:id="@+id/ivComment"
@@ -87,7 +88,7 @@
         android:src="@mipmap/comment"
         app:layout_constraintEnd_toStartOf="@+id/ivCollect"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivVideoCover"
+        app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
         android:contentDescription="@string/comment_img" />
 
     <ImageView
@@ -98,7 +99,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivCollect"
         app:layout_constraintTop_toBottomOf="@+id/flPlayerContainer"
-        tools:srcCompat="@mipmap/likes" />
+        tools:srcCompat="@mipmap/likes"
+        android:contentDescription="@string/likes_img" />
 
     <TextView
         android:id="@+id/tvCollect"

@@ -145,7 +145,7 @@ class VideoListFragment : BaseFragment() {
         removeViewFormParent(mVideoView)
         viewHolder.flPlayerContainer.addView(mVideoView, 0)
         //播放之前将VideoView添加到VideoViewManager以便在别的页面也能操作它
-        getVideoViewManager().add(mVideoView, NavigationActivity.LIST)
+        getVideoViewManager()?.add(mVideoView, NavigationActivity.LIST)
         mVideoView.start()
         mCurPos = position
     }

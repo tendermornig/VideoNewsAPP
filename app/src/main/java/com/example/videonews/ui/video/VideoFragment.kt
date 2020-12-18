@@ -65,7 +65,7 @@ class VideoFragment : BaseFragment() {
 
     override fun onDetach() {
         super.onDetach()
-        getVideoViewManager().releaseByTag(NavigationActivity.LIST)
+        getVideoViewManager()?.releaseByTag(NavigationActivity.LIST)
     }
 
     companion object {

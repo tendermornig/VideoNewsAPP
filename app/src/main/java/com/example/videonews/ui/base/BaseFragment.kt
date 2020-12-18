@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import com.dueeeke.videoplayer.player.VideoViewManager
 import com.example.videonews.R
 import com.example.videonews.ui.welcome.WelcomeActivity
 import com.example.videonews.utils.showToast
