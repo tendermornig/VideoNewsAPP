@@ -33,22 +33,12 @@ class VideoListFragment : BaseFragment() {
     private lateinit var mCompleteView: CompleteView
     private lateinit var mTitleView: TitleView
 
-    /**
-     * 当前播放的位置
-     */
-    private var mCurPos = -1
-
-    /**
-     * 上次播放的位置，用于页面切回来之后恢复播放
-     */
-    private var mLastPos = mCurPos
-
     override fun onResume() {
         super.onResume()
-        if (mLastPos == -1) return
+        if (viewModel.mLastPos == -1) return
         if (NavigationActivity.mCurrentIndex != 0) return
         //恢复上次播放的位置
-        startPlay(mLastPos)
+        startPlay(viewModel.mLastPos)
     }
 
     override fun getLayoutId() = R.layout.fragment_video_list
@@ -86,8 +76,8 @@ class VideoListFragment : BaseFragment() {
                 //监听VideoViewManager释放，重置状态
                 if (playState == VideoView.STATE_IDLE) {
                     removeViewFormParent(mVideoView)
-                    mLastPos = mCurPos
-                    mCurPos = -1
+                    viewModel.mLastPos = viewModel.mCurPos
+                    viewModel.mCurPos = -1
                 }
             }
         })
@@ -130,8 +120,8 @@ class VideoListFragment : BaseFragment() {
      * @param position 列表位置
      */
     private fun startPlay(position: Int) {
-        if (mCurPos == position) return
-        if (mCurPos != -1) {
+        if (viewModel.mCurPos == position) return
+        if (viewModel.mCurPos != -1) {
             releaseVideoView()
         }
         val video = viewModel.cacheData[position]
@@ -147,7 +137,7 @@ class VideoListFragment : BaseFragment() {
         //播放之前将VideoView添加到VideoViewManager以便在别的页面也能操作它
         getVideoViewManager()?.add(mVideoView, NavigationActivity.LIST)
         mVideoView.start()
-        mCurPos = position
+        viewModel.mCurPos = position
     }
 
     private fun releaseVideoView() {
@@ -158,7 +148,7 @@ class VideoListFragment : BaseFragment() {
         if (activity!!.requestedOrientation != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
             activity!!.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        mCurPos = -1
+        viewModel.mCurPos = -1
     }
 
     /**
@@ -175,8 +165,6 @@ class VideoListFragment : BaseFragment() {
     companion object {
 
         private const val VIDEO_CATEGORY = "video_category"
-
-        private const val TAG = "VideoListFragment"
 
         @JvmStatic
         fun newInstance(category: Int) =

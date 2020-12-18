@@ -2,16 +2,12 @@ package com.example.videonews.ui.user
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.R
 import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.activity_register.etAccount
-import kotlinx.android.synthetic.main.activity_register.etPwd
 
 class RegisterActivity : BaseActivity() {
 
@@ -84,8 +80,6 @@ class RegisterActivity : BaseActivity() {
     }
 
     companion object {
-
-        private const val TAG = "RegisterActivity"
 
         fun startRegisterActivity(context: Context) {
             val intent = Intent(context, RegisterActivity::class.java)

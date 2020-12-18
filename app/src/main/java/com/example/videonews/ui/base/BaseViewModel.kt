@@ -11,7 +11,7 @@ abstract class BaseViewModel<Data, CacheData, Key> : ViewModel() {
 
     private val requestLiveData = MutableLiveData<Key>()
 
-    val dataLiveData = Transformations.switchMap(requestLiveData,) {
+    val dataLiveData = Transformations.switchMap(requestLiveData) {
         getData(it)
     }
 

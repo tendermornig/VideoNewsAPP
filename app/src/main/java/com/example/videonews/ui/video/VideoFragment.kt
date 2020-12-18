@@ -70,8 +70,6 @@ class VideoFragment : BaseFragment() {
 
     companion object {
 
-        private const val TAG = "VideoFragment"
-
         @JvmStatic
         fun newInstance() =
             VideoFragment().apply {

@@ -8,8 +8,6 @@ import kotlin.coroutines.CoroutineContext
 
 object Repository {
 
-    private const val TAG = "Repository"
-
     fun userLogin(loginParam: Map<String, String>) = fire(Dispatchers.IO) {
         val loginResult = VideoNewsNetwork.userLogin(loginParam)
         if ("success" == loginResult.msg && 200 == loginResult.code) {

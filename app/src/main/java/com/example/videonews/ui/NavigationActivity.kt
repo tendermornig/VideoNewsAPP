@@ -69,8 +69,6 @@ class NavigationActivity : BaseActivity() {
 
     companion object {
 
-        private const val TAG = "NavigationActivity"
-
         //列表播放
         const val LIST = "list"
 

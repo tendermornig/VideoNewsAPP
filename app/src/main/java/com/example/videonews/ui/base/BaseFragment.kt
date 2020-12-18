@@ -60,8 +60,4 @@ abstract class BaseFragment : Fragment(), BaseInit {
     protected fun getVideoViewManager(): VideoViewManager? {
         return VideoViewManager.instance()
     }
-
-    companion object {
-        private const val TAG = "BaseFragment"
-    }
 }

@@ -77,8 +77,4 @@ abstract class BaseActivity : AppCompatActivity(), BaseInit {
      * 子类可通过此方法直接拿到VideoViewManager
      */
     protected fun getVideoViewManager() = VideoViewManager.instance()!!
-
-    companion object {
-        private const val TAG = "BaseActivity"
-    }
 }

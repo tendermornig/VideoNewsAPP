@@ -10,8 +10,6 @@ object ActivityCollector {
 
     private val activityList = ArrayList<WeakReference<Activity>?>()
 
-    fun size() = activityList.size
-
     fun add(weakReference: WeakReference<Activity>?) {
         activityList.add(weakReference)
     }

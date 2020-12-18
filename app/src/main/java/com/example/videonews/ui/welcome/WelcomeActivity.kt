@@ -41,7 +41,6 @@ class WelcomeActivity : BaseActivity() {
     }
 
     companion object {
-        private const val TAG = "WelcomeActivity"
 
         fun startWelcomeActivity(context: Context) {
             val intent = Intent(context, WelcomeActivity::class.java)
