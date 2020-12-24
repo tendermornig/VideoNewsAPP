@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
+import androidx.viewbinding.ViewBinding
 import com.dueeeke.videoplayer.player.VideoViewManager
 import com.example.videonews.R
 import com.example.videonews.utils.showToast
@@ -14,13 +15,15 @@ import java.lang.ref.WeakReference
 /**
  * 应用中activity的基类
  */
-abstract class BaseActivity : AppCompatActivity(), BaseInit {
+abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), BaseInit<T> {
 
-    private var weakReference: WeakReference<Activity>? = null
+    protected lateinit var mBinding: T
+    protected var weakReference: WeakReference<Activity>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        mBinding = initViewBinding()
+        setContentView(mBinding.root)
         transparentStatusBar()
         weakReference = WeakReference(this)
         ActivityCollector.add(weakReference)
@@ -67,8 +70,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseInit {
 //                insets
 //            }
         } else {
-            val decorView = window.decorView
-            decorView.systemUiVisibility =
+            window.decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         }
     }
@@ -77,4 +79,9 @@ abstract class BaseActivity : AppCompatActivity(), BaseInit {
      * 子类可通过此方法直接拿到VideoViewManager
      */
     protected fun getVideoViewManager() = VideoViewManager.instance()!!
+
+    /**
+     * 初始化ViewBinding
+     * @return 初始化好的View Binding
+     */
 }

@@ -1,24 +1,31 @@
 package com.example.videonews.ui.base
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.viewbinding.ViewBinding
 import com.dueeeke.videoplayer.player.VideoViewManager
 import com.example.videonews.R
 import com.example.videonews.ui.welcome.WelcomeActivity
 import com.example.videonews.utils.showToast
 
-abstract class BaseFragment : Fragment(), BaseInit {
+abstract class BaseFragment<T : ViewBinding> : Fragment(), BaseInit<T> {
+
+    protected lateinit var mActivity: Activity
+    protected lateinit var mBinding: T
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(getLayoutId(), container, false)
+        mActivity = activity!!
+        mBinding = initViewBinding()
+        return mBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -49,8 +56,8 @@ abstract class BaseFragment : Fragment(), BaseInit {
     }
 
     fun toReLogin(msg: String) {
-        WelcomeActivity.startWelcomeActivity(context!!)
         ActivityCollector.finishAll()
+        WelcomeActivity.startWelcomeActivity(mActivity)
         msg.showToast()
     }
 

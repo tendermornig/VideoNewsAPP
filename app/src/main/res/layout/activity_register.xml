@@ -45,14 +45,14 @@
                 tools:ignore="ContentDescription" />
 
             <EditText
-                android:id="@+id/etAccount"
+                android:id="@+id/et_account"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
                 android:background="@null"
-                android:hint="@string/et_account_hint"
+                android:hint="@string/account_hint"
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:textSize="20sp"
@@ -68,7 +68,7 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="20dp"
                 android:background="#e8e7e7"
-                app:layout_constraintBottom_toTopOf="@+id/etPwd"
+                app:layout_constraintBottom_toTopOf="@+id/et_pwd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -84,13 +84,13 @@
                 tools:ignore="ContentDescription" />
 
             <EditText
-                android:id="@+id/etPwd"
+                android:id="@+id/et_pwd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="30dp"
                 android:background="@null"
-                android:hint="@string/et_pws_hint"
+                android:hint="@string/pwd_hint"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +108,7 @@
                 android:background="#e8e7e7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etPwd" />
+                app:layout_constraintTop_toBottomOf="@+id/et_pwd" />
 
             <ImageView
                 android:id="@+id/imgTwoPwd"
@@ -124,17 +124,17 @@
                 tools:ignore="ContentDescription" />
 
             <EditText
-                android:id="@+id/etTwoPwd"
+                android:id="@+id/et_twoPwd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:background="@null"
-                android:hint="@string/et_two_pws_hint"
+                android:hint="@string/two_pwd_hint"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/etPwd"
+                app:layout_constraintStart_toStartOf="@+id/et_pwd"
                 app:layout_constraintTop_toBottomOf="@+id/dividerTwo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

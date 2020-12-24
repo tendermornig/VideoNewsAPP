@@ -4,13 +4,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.R
+import com.example.videonews.databinding.ActivityLoginBinding
 import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
-import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : BaseActivity() {
+class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -19,12 +19,12 @@ class LoginActivity : BaseActivity() {
         ).get(LoginViewModel::class.java)
     }
 
-    override fun getLayoutId() = R.layout.activity_login
+    override fun initViewBinding() = ActivityLoginBinding.inflate(layoutInflater)
 
     override fun initView() {
-        btnLogin.setOnClickListener {
-            val userAccount = etAccount.text.toString()
-            val userPwd = etPwd.text.toString()
+        mBinding.btnLogin.setOnClickListener {
+            val userAccount = mBinding.etAccount.text.toString()
+            val userPwd = mBinding.etPwd.text.toString()
             if (verificationLoginParam(userAccount, userPwd)) {
                 val encryptionUserPwd = encoderByMd5(userPwd)
                 val loginParam =
@@ -38,10 +38,9 @@ class LoginActivity : BaseActivity() {
         setDataStatus(viewModel.dataLiveData) {
             if (it != null && "" != it) {
                 viewModel.saveUserToken(it)
-                NavigationActivity.startNavigationActivity(this)
-                finish()
+                NavigationActivity.start(this)
                 "登录成功".showToast()
-            } else getString(R.string.login_error_text).showToast()
+            } else getString(R.string.login_error_tip).showToast()
         }
     }
 
@@ -49,7 +48,7 @@ class LoginActivity : BaseActivity() {
         userAccount: String,
         userPwd: String
     ): Boolean {
-        if ("" == userAccount) {
+        if (userAccount.isEmpty()) {
             "账号不可为空".showToast()
             return false
         }
@@ -57,7 +56,7 @@ class LoginActivity : BaseActivity() {
             "账号长度应为10位".showToast()
             return false
         }
-        if ("" == userPwd) {
+        if (userPwd.isEmpty()) {
             "密码不可为空".showToast()
             return false
         }
@@ -70,11 +69,10 @@ class LoginActivity : BaseActivity() {
 
     companion object {
 
-        private const val TAG = "LoginActivity"
-
-        fun startLoginActivity(context: Context) {
-            val intent = Intent(context, LoginActivity::class.java)
-            context.startActivity(intent)
+        @JvmStatic
+        fun start(context: Context) {
+            val starter = Intent(context, LoginActivity::class.java)
+            context.startActivity(starter)
         }
     }
 }

@@ -1,21 +1,22 @@
 <resources>
     <string name="app_name">VideoNews</string>
     <string name="bad_network_view_tip">网络不给力，请重试</string>
-    <string name="bad_network_img_content">应用处于网络错误时的图片</string>
-    <string name="no_content_img_content">应用界面没有内容图片</string>
-    <string name="load_error_img_content">应用加载失败时的图片</string>
-    <string name="login_text">登录</string>
-    <string name="register_text">注册</string>
-    <string name="et_account_hint">请输入用户名</string>
-    <string name="et_pws_hint">请输入密码</string>
-    <string name="login_error_text">账号或密码错误，登录失败</string>
-    <string name="et_two_pws_hint">请再次输入密码</string>
-    <string name="nav_video_text">视频</string>
-    <string name="nav_news_text">资讯</string>
-    <string name="nav_user_text">我的</string>
-    <string name="et_search_hint">搜索你喜欢的视频</string>
+    <string name="user_token_expire_tip">用户登录已过期</string>
+    <string name="login_error_tip">账号或密码错误，登录失败</string>
+    <string name="bad_network_img">应用处于网络错误时的图片</string>
+    <string name="no_content_img">应用界面没有内容图片</string>
+    <string name="load_error_img">应用加载失败时的图片</string>
     <string name="head_img">头像图片</string>
     <string name="collect_img">收藏图标</string>
     <string name="comment_img">评论图标</string>
     <string name="likes_img">点赞图标</string>
+    <string name="login_text">登录</string>
+    <string name="register_text">注册</string>
+    <string name="nav_video_text">视频</string>
+    <string name="nav_news_text">资讯</string>
+    <string name="nav_user_text">我的</string>
+    <string name="account_hint">请输入用户名</string>
+    <string name="pwd_hint">请输入密码</string>
+    <string name="two_pwd_hint">请再次输入密码</string>
+    <string name="search_hint">搜索你喜欢的视频</string>
 </resources>

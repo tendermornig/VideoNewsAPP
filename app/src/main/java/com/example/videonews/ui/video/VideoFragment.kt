@@ -1,16 +1,14 @@
 package com.example.videonews.ui.video
 
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.videonews.R
+import com.example.videonews.databinding.FragmentVideoBinding
 import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_video.*
 
-class VideoFragment : BaseFragment() {
+class VideoFragment : BaseFragment<FragmentVideoBinding>() {
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -21,11 +19,10 @@ class VideoFragment : BaseFragment() {
 
     private lateinit var adapter: FragmentStateAdapter
 
-    override fun getLayoutId() = R.layout.fragment_video
+    override fun initViewBinding() = FragmentVideoBinding.inflate(layoutInflater)
 
     override fun initView() {
-
-        fl.fitsSystemWindows = true
+        mBinding.fl.fitsSystemWindows = true
         adapter = object :
             FragmentStateAdapter(childFragmentManager, lifecycle) {
             override fun getItemCount() = viewModel.cacheData.size
@@ -34,8 +31,8 @@ class VideoFragment : BaseFragment() {
                 return VideoListFragment.newInstance(viewModel.cacheData[position].categoryId)
             }
         }
-        vpVideo.adapter = adapter
-        TabLayoutMediator(tlCategory, vpVideo, true) { tab, position ->
+        mBinding.vpVideo.adapter = adapter
+        TabLayoutMediator(mBinding.tlCategory, mBinding.vpVideo, true) { tab, position ->
             tab.text = viewModel.cacheData[position].categoryName
         }.attach()
     }
@@ -51,15 +48,6 @@ class VideoFragment : BaseFragment() {
                 viewModel.clearUserToken()
                 toReLogin("用户登录已过期")
             }
-        }
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (hidden) {
-            vpVideo.visibility = View.GONE
-        } else {
-            vpVideo.visibility = View.VISIBLE
         }
     }
 

@@ -12,12 +12,12 @@ import com.dueeeke.videocontroller.component.*
 import com.dueeeke.videoplayer.player.AbstractPlayer
 import com.dueeeke.videoplayer.player.VideoView
 import com.example.videonews.R
+import com.example.videonews.databinding.FragmentVideoListBinding
 import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_video_list.*
 
 
-class VideoListFragment : BaseFragment() {
+class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -41,18 +41,18 @@ class VideoListFragment : BaseFragment() {
         startPlay(viewModel.mLastPos)
     }
 
-    override fun getLayoutId() = R.layout.fragment_video_list
+    override fun initViewBinding() = FragmentVideoListBinding.inflate(layoutInflater)
 
     override fun initView() {
         initVideoView()
-        mLayoutManager = LinearLayoutManager(context)
-        rlVideoList.layoutManager = mLayoutManager
-        adapter = VideoRvAdapter(viewModel.cacheData, context!!)
+        mLayoutManager = LinearLayoutManager(mActivity)
+        mBinding.rlVideoList.layoutManager = mLayoutManager
+        adapter = VideoRvAdapter(viewModel.cacheData, mActivity)
         adapter.setOnItemClickListener {
             startPlay(it)
         }
-        rlVideoList.adapter = adapter
-        rlVideoList.addOnChildAttachStateChangeListener(object :
+        mBinding.rlVideoList.adapter = adapter
+        mBinding.rlVideoList.addOnChildAttachStateChangeListener(object :
             RecyclerView.OnChildAttachStateChangeListener {
             override fun onChildViewAttachedToWindow(view: View) {
 
@@ -69,7 +69,7 @@ class VideoListFragment : BaseFragment() {
     }
 
     private fun initVideoView() {
-        mVideoView = VideoView(context!!)
+        mVideoView = VideoView(mActivity)
         mVideoView.setOnStateChangeListener(object : VideoView.SimpleOnStateChangeListener() {
             override fun onPlayStateChanged(playState: Int) {
                 super.onPlayStateChanged(playState)
@@ -81,15 +81,15 @@ class VideoListFragment : BaseFragment() {
                 }
             }
         })
-        mController = StandardVideoController(activity!!)
-        mErrorView = ErrorView(activity)
+        mController = StandardVideoController(mActivity)
+        mErrorView = ErrorView(mActivity)
         mController.addControlComponent(mErrorView)
-        mCompleteView = CompleteView(activity!!)
+        mCompleteView = CompleteView(mActivity)
         mController.addControlComponent(mCompleteView)
-        mTitleView = TitleView(activity!!)
+        mTitleView = TitleView(mActivity)
         mController.addControlComponent(mTitleView)
-        mController.addControlComponent(VodControlView(activity!!))
-        mController.addControlComponent(GestureView(activity!!))
+        mController.addControlComponent(VodControlView(mActivity))
+        mController.addControlComponent(GestureView(mActivity))
         mController.setEnableOrientation(true)
         mVideoView.setVideoController(mController)
     }
@@ -105,7 +105,7 @@ class VideoListFragment : BaseFragment() {
                 adapter.notifyItemRangeChanged(adapter.lastSize, viewModel.cacheData.size)
                 adapter.lastSize = viewModel.cacheData.size
             } else {
-                toReLogin("用户登录已过期")
+                toReLogin(getString(R.string.user_token_expire_tip))
             }
         }
     }

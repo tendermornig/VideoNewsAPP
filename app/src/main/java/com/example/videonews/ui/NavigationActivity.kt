@@ -4,30 +4,30 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import com.example.videonews.R
+import com.example.videonews.databinding.ActivityNavigationBinding
+import com.example.videonews.ui.base.ActivityCollector
 import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.ui.news.NewsFragment
 import com.example.videonews.ui.user.UserFragment
 import com.example.videonews.ui.video.VideoFragment
-import kotlinx.android.synthetic.main.activity_navigation.*
 
-class NavigationActivity : BaseActivity() {
+class NavigationActivity : BaseActivity<ActivityNavigationBinding>() {
 
     private val menuId = listOf(R.id.tab_video, R.id.tab_news, R.id.tab_user)
     private val mFragments =
         listOf(VideoFragment.newInstance(), NewsFragment.newInstance(), UserFragment.newInstance())
 
-    override fun getLayoutId() = R.layout.activity_navigation
+    override fun initViewBinding() = ActivityNavigationBinding.inflate(layoutInflater)
 
     override fun initView() {
         clearNavToast()
         supportFragmentManager.beginTransaction()
             .add(R.id.flContent, mFragments[0])
             .commitAllowingStateLoss()
-
     }
 
     override fun initData() {
-        bnv.setOnNavigationItemSelectedListener {
+        mBinding.bnv.setOnNavigationItemSelectedListener {
             var index = -1
             when (it.itemId) {
                 menuId[0] -> index = 0
@@ -54,7 +54,7 @@ class NavigationActivity : BaseActivity() {
     }
 
     private fun clearNavToast() {
-        val menuItem = bnv.getChildAt(0)
+        val menuItem = mBinding.bnv.getChildAt(0)
         for (i in menuId.indices) {
             menuItem.findViewById<View>(menuId[i]).setOnLongClickListener { true }
         }
@@ -74,9 +74,11 @@ class NavigationActivity : BaseActivity() {
 
         var mCurrentIndex = 0
 
-        fun startNavigationActivity(context: Context) {
-            val intent = Intent(context, NavigationActivity::class.java)
-            context.startActivity(intent)
+        @JvmStatic
+        fun start(context: Context) {
+            val starter = Intent(context, NavigationActivity::class.java)
+            ActivityCollector.finishAll()
+            context.startActivity(starter)
         }
     }
 }

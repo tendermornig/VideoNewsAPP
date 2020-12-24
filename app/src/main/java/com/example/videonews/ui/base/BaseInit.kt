@@ -1,11 +1,12 @@
 package com.example.videonews.ui.base
 
-interface BaseInit {
+interface BaseInit<T> {
 
     /**
-     * 获取布局id
+     * 初始化View Binding
+     * @return 初始化好的View Binding
      */
-    fun getLayoutId(): Int
+    fun initViewBinding() : T
 
     /**
      * 初始化视图

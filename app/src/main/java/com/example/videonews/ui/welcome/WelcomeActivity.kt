@@ -3,14 +3,13 @@ package com.example.videonews.ui.welcome
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
-import com.example.videonews.R
+import com.example.videonews.databinding.ActivityWelcomeBinding
 import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.ui.user.LoginActivity
 import com.example.videonews.ui.user.RegisterActivity
-import kotlinx.android.synthetic.main.activity_welcome.*
 
-class WelcomeActivity : BaseActivity() {
+class WelcomeActivity : BaseActivity<ActivityWelcomeBinding>() {
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -19,24 +18,19 @@ class WelcomeActivity : BaseActivity() {
         ).get(WelcomeViewModel::class.java)
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_welcome
-    }
+    override fun initViewBinding() = ActivityWelcomeBinding.inflate(layoutInflater)
 
     override fun initView() {}
 
     override fun initData() {
-        if ("" != viewModel.getUserToken()) {
-            NavigationActivity.startNavigationActivity(this)
-            finish()
+        if (viewModel.getUserToken().isNotEmpty()) {
+            NavigationActivity.start(this)
         }
-        btnToLogin.setOnClickListener {
-            LoginActivity.startLoginActivity(this)
-            finish()
+        mBinding.btnToLogin.setOnClickListener {
+            LoginActivity.start(this)
         }
-        btnToRegister.setOnClickListener {
-            RegisterActivity.startRegisterActivity(this)
-            finish()
+        mBinding.btnToRegister.setOnClickListener {
+            RegisterActivity.start(this)
         }
     }
 
