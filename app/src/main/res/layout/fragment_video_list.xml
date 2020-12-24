@@ -6,4 +6,4 @@
     android:layout_height="match_parent"
     android:background="@color/wall"
     tools:context=".ui.video.VideoListFragment"
-    tools:listitem="@layout/video_list_item" />
+    tools:listitem="@layout/item_video" />

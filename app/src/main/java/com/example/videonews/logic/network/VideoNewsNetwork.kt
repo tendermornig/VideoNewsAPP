@@ -12,7 +12,7 @@ object VideoNewsNetwork {
 
     private val userService = ServiceCreator.create<UserService>()
 
-    private val videoNewsListService = ServiceCreator.create<VideoNewsListService>()
+    private val videoService = ServiceCreator.create<VideoService>()
 
     suspend fun userLogin(loginParam: Map<String, String>) =
         userService.userLogin(loginParam).await()
@@ -21,10 +21,10 @@ object VideoNewsNetwork {
         userService.userRegister(registerParam).await()
 
     suspend fun getCategory(token: String) =
-        videoNewsListService.getCategory(token).await()
+        videoService.getCategory(token).await()
 
     suspend fun getVideoList(token: String, category: Int) =
-        videoNewsListService.getVideoList(token, category).await()
+        videoService.getVideoList(token, category).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {

@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-interface VideoNewsListService {
+interface VideoService {
 
     @GET("list/category")
     fun getCategory(@Header("token") token: String): Call<BaseResponse<List<CategoryModel>>>

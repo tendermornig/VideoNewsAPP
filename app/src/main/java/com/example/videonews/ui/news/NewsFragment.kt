@@ -1,23 +1,16 @@
 package com.example.videonews.ui.news
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.videonews.R
+import com.example.videonews.databinding.FragmentNewsBinding
+import com.example.videonews.ui.base.BaseFragment
 
-class NewsFragment : Fragment() {
+class NewsFragment : BaseFragment<FragmentNewsBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initViewBinding() = FragmentNewsBinding.inflate(layoutInflater)
+
+    override fun initView() {
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_news, container, false)
+    override fun initData() {
     }
 
     companion object {
