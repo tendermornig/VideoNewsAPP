@@ -13,7 +13,7 @@ import com.dueeeke.videoplayer.player.AbstractPlayer
 import com.dueeeke.videoplayer.player.VideoView
 import com.example.videonews.R
 import com.example.videonews.databinding.FragmentVideoListBinding
-import com.example.videonews.databinding.ItemVideoListBinding
+import com.example.videonews.databinding.ItemVideoBinding
 import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseFragment
 
@@ -129,8 +129,8 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
         mVideoView.setUrl(video.playUrl)
         mTitleView.setTitle(video.vtitle)
         val itemView: View = mLayoutManager.findViewByPosition(position) ?: return
-        val itemBinding: ItemVideoListBinding =
-            itemView.tag as ItemVideoListBinding
+        val itemBinding: ItemVideoBinding =
+            itemView.tag as ItemVideoBinding
         //把列表中预置的PrepareView添加到控制器中，注意isPrivate此处只能为true。
         mController.addControlComponent(itemBinding.pv, true)
         removeViewFormParent(mVideoView)

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.videonews.R
-import com.example.videonews.databinding.ItemVideoListBinding
+import com.example.videonews.databinding.ItemVideoBinding
 import com.example.videonews.logic.model.VideoModel
 import com.example.videonews.ui.video.VideoRvAdapter.ViewHolder
 
@@ -22,7 +22,7 @@ class VideoRvAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
-            ItemVideoListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemVideoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val holder = ViewHolder(itemBinding)
         onItemClickListener?.let { l ->
             itemBinding.pv.setOnClickListener {
@@ -56,7 +56,7 @@ class VideoRvAdapter(
         this.onItemClickListener = onItemClickListener
     }
 
-    inner class ViewHolder(val itemBinding: ItemVideoListBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class ViewHolder(val itemBinding: ItemVideoBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
         init {
             itemBinding.root.tag = itemBinding
