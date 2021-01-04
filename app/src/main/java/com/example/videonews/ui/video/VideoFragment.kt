@@ -22,7 +22,6 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
     override fun initViewBinding() = FragmentVideoBinding.inflate(layoutInflater)
 
     override fun initView() {
-        mBinding.fl.fitsSystemWindows = true
         adapter = object :
             FragmentStateAdapter(childFragmentManager, lifecycle) {
             override fun getItemCount() = viewModel.cacheData.size

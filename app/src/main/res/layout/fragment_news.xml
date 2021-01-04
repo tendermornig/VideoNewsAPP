@@ -7,11 +7,12 @@
     tools:context=".ui.news.NewsFragment">
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:background="#344261"
+        android:fitsSystemWindows="true"
         android:gravity="center"
-        android:padding="8dp"
         android:text="@string/nav_news_text"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
@@ -20,6 +21,6 @@
         android:id="@+id/rvNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_news_3" />
+        tools:listitem="@layout/item_news_1" />
 
 </LinearLayout>
