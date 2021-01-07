@@ -17,7 +17,10 @@ import com.example.videonews.databinding.ItemVideoBinding
 import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseFragment
 
-
+/**
+ * @author Miracle
+ * 视频列表界面
+ */
 class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
 
     private val viewModel by lazy {
@@ -26,12 +29,40 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
             ViewModelProvider.NewInstanceFactory()
         ).get(VideoListViewModel::class.java)
     }
+
+    /**
+     * 列表布局管理器
+     */
     private lateinit var mLayoutManager: LinearLayoutManager
+
+    /**
+     * 列表适配器
+     */
     private lateinit var adapter: VideoRvAdapter
+
+    /**
+     * 播放器
+     */
     private lateinit var mVideoView: VideoView<AbstractPlayer>
+
+    /**
+     * 视频播放控制器
+     */
     private lateinit var mController: StandardVideoController
+
+    /**
+     * 播放出错提示界面
+     */
     private lateinit var mErrorView: ErrorView
+
+    /**
+     * 自动播放完成界面
+     */
     private lateinit var mCompleteView: CompleteView
+
+    /**
+     * 播放器顶部标题栏
+     */
     private lateinit var mTitleView: TitleView
 
     override fun onResume() {
@@ -69,6 +100,9 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
         })
     }
 
+    /**
+     * 初始化视频播放器
+     */
     private fun initVideoView() {
         mVideoView = VideoView(mActivity)
         mVideoView.setOnStateChangeListener(object : VideoView.SimpleOnStateChangeListener() {
@@ -141,6 +175,9 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
         viewModel.mCurPos = position
     }
 
+    /**
+     * 释放视频播放器
+     */
     private fun releaseVideoView() {
         mVideoView.release()
         if (mVideoView.isFullScreen) {
@@ -165,6 +202,9 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
 
     companion object {
 
+        /**
+         * 用于获取从活动中传入的参数的key
+         */
         private const val VIDEO_CATEGORY = "video_category"
 
         @JvmStatic

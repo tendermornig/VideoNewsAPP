@@ -9,6 +9,10 @@ import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.ui.user.LoginActivity
 import com.example.videonews.ui.user.RegisterActivity
 
+/**
+ * @author Miracle
+ * 欢迎界面
+ */
 class WelcomeActivity : BaseActivity<ActivityWelcomeBinding>() {
 
     private val viewModel by lazy {
@@ -36,9 +40,10 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding>() {
 
     companion object {
 
-        fun startWelcomeActivity(context: Context) {
-            val intent = Intent(context, WelcomeActivity::class.java)
-            context.startActivity(intent)
+        @JvmStatic
+        fun start(context: Context) {
+            val starter = Intent(context, WelcomeActivity::class.java)
+            context.startActivity(starter)
         }
     }
 }

@@ -13,9 +13,20 @@ import com.example.videonews.R
 import com.example.videonews.ui.welcome.WelcomeActivity
 import com.example.videonews.utils.showToast
 
+/**
+ * @author Miracle
+ * 应用中所有Fragment的基类
+ */
 abstract class BaseFragment<T : ViewBinding> : Fragment(), BaseInit<T> {
 
+    /**
+     * fragment对应的上下文
+     */
     protected lateinit var mActivity: Activity
+
+    /**
+     * fragment对应的ViewBinding
+     */
     protected lateinit var mBinding: T
 
     override fun onCreateView(
@@ -55,9 +66,13 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), BaseInit<T> {
         }
     }
 
+    /**
+     * 当用户登录过期时 调用此方法跳转到登录页面重新登录
+     * @param msg 提示信息
+     */
     fun toReLogin(msg: String) {
         ActivityCollector.finishAll()
-        WelcomeActivity.startWelcomeActivity(mActivity)
+        WelcomeActivity.start(mActivity)
         msg.showToast()
     }
 

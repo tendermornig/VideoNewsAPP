@@ -8,6 +8,10 @@ import com.example.videonews.ui.NavigationActivity
 import com.example.videonews.ui.base.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
+/**
+ * @author Miracle
+ * 视频导航界面
+ */
 class VideoFragment : BaseFragment<FragmentVideoBinding>() {
 
     private val viewModel by lazy {
@@ -17,6 +21,9 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
         ).get(VideoViewModel::class.java)
     }
 
+    /**
+     * 视频列表viewPager适配器
+     */
     private lateinit var adapter: FragmentStateAdapter
 
     override fun initViewBinding() = FragmentVideoBinding.inflate(layoutInflater)

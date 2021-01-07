@@ -11,9 +11,19 @@ import com.example.videonews.ui.news.NewsFragment
 import com.example.videonews.ui.user.UserFragment
 import com.example.videonews.ui.video.VideoFragment
 
+/**
+ * 导航界面
+ */
 class NavigationActivity : BaseActivity<ActivityNavigationBinding>() {
 
+    /**
+     * 底部选项id集合
+     */
     private val menuId = listOf(R.id.tab_video, R.id.tab_news, R.id.tab_user)
+
+    /**
+     * 选项对应的fragment实例集合
+     */
     private val mFragments =
         listOf(VideoFragment.newInstance(), NewsFragment.newInstance(), UserFragment.newInstance())
 
@@ -53,6 +63,10 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding>() {
         }
     }
 
+    /**
+     * 由于BottomNavigationView控件选项自带长按弹窗
+     * 此方法用于去除长按弹窗
+     */
     private fun clearNavToast() {
         val menuItem = mBinding.bnv.getChildAt(0)
         for (i in menuId.indices) {
@@ -69,9 +83,14 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding>() {
 
     companion object {
 
-        //列表播放
+        /**
+         * 列表播放
+         */
         const val LIST = "list"
 
+        /**
+         * 当前展示的选项位置
+         */
         var mCurrentIndex = 0
 
         @JvmStatic

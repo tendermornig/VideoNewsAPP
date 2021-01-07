@@ -6,6 +6,9 @@ import android.content.Context
 class VideoNewsApplication : Application() {
 
     companion object {
+        /**
+         * 一个全局的上下文
+         */
         lateinit var mContext: Context
     }
 

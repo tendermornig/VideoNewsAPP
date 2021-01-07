@@ -8,13 +8,14 @@ import android.view.View
 import android.view.WindowInsets
 import android.widget.FrameLayout
 
+/**
+ * 解决导航页面fragment不能正确预留出状态栏空间的FrameLayout
+ */
 class WindowInsetsFrameLayout(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     FrameLayout(context, attrs, defStyleAttr) {
 
-    constructor(context: Context) : this(context, null)
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {
+    constructor(context: Context, attrs: AttributeSet? = null) : this(context, attrs, 0) {
         setOnHierarchyChangeListener(object : OnHierarchyChangeListener {
             override fun onChildViewAdded(parent: View?, child: View?) {
                 requestApplyInsets()

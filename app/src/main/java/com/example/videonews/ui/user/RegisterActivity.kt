@@ -9,6 +9,10 @@ import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
 
+/**
+ * @author Miracle
+ * 注册界面
+ */
 class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
 
     private val viewModel by lazy {
@@ -43,6 +47,13 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
         }
     }
 
+    /**
+     * 验证用户注册参数是否合法函数
+     * @param userAccount 用户账户
+     * @param userPwd 用户一次输入密码
+     * @param userTwoPwd 用户二次输入密码
+     * @return 验证结果
+     */
     private fun verificationRegisterParam(
         userAccount: String,
         userPwd: String,

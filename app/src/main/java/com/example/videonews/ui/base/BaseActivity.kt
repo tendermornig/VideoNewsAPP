@@ -13,11 +13,19 @@ import com.example.videonews.utils.showToast
 import java.lang.ref.WeakReference
 
 /**
+ * @author Miracle
  * 应用中activity的基类
  */
 abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), BaseInit<T> {
 
+    /**
+     * 活动对应的ViewBinding
+     */
     protected lateinit var mBinding: T
+
+    /**
+     * 活动对应的弱引用
+     */
     protected var weakReference: WeakReference<Activity>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,9 +87,4 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), BaseInit<T> 
      * 子类可通过此方法直接拿到VideoViewManager
      */
     protected fun getVideoViewManager() = VideoViewManager.instance()!!
-
-    /**
-     * 初始化ViewBinding
-     * @return 初始化好的View Binding
-     */
 }

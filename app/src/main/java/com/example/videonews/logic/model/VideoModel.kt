@@ -2,7 +2,11 @@ package com.example.videonews.logic.model
 
 import java.io.Serializable
 
-data class VideoModel(
+/**
+ * @author Miracle
+ * 视频实体类
+ */
+data class Video(
     var vtitle: String,
     var author: String,
     var coverUrl: String,
@@ -12,3 +16,8 @@ data class VideoModel(
     var likeNum: Int,
     var playUrl: String
 ) : Serializable
+
+/**
+ * 视频分类实体类
+ */
+data class Category(var categoryId: Int, var categoryName: String) : Serializable

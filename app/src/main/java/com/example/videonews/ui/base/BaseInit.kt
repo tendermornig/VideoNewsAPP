@@ -1,10 +1,14 @@
 package com.example.videonews.ui.base
 
+/**
+ * @author Miracle
+ * 基础初始化接口 提供初始方法给实现类重写
+ */
 interface BaseInit<T> {
 
     /**
-     * 初始化View Binding
-     * @return 初始化好的View Binding
+     * 初始化ViewBinding
+     * @return 初始化好的ViewBinding
      */
     fun initViewBinding() : T
 

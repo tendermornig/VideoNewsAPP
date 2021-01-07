@@ -6,10 +6,14 @@ import com.example.videonews.logic.network.VideoNewsNetwork
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * @author Miracle
+ * 仓库层统一封装入口
+ */
 object Repository {
 
-    fun userLogin(loginParam: Map<String, String>) = fire(Dispatchers.IO) {
-        val loginResult = VideoNewsNetwork.userLogin(loginParam)
+    fun userLogin(requestParam: Map<String, String>) = fire(Dispatchers.IO) {
+        val loginResult = VideoNewsNetwork.userLogin(requestParam)
         if ("success" == loginResult.msg && 200 == loginResult.code) {
             Result.success(loginResult.data)
         } else {
@@ -21,8 +25,8 @@ object Repository {
         }
     }
 
-    fun userRegister(registerParam: Map<String, String>) = fire(Dispatchers.IO) {
-        val registerResult = VideoNewsNetwork.userRegister(registerParam)
+    fun userRegister(requestParam: Map<String, String>) = fire(Dispatchers.IO) {
+        val registerResult = VideoNewsNetwork.userRegister(requestParam)
         if ("success" == registerResult.msg) {
             when (registerResult.code) {
                 200 -> Result.success(true)
@@ -42,21 +46,8 @@ object Repository {
         }
     }
 
-    fun getCategory(token: String) = fire {
-        val categoryResult = VideoNewsNetwork.getCategory(token)
-        if ("success" == categoryResult.msg) {
-            Result.success(categoryResult)
-        } else {
-            Result.failure(
-                RuntimeException(
-                    "response status msg is ${categoryResult.msg} code is ${categoryResult.code}"
-                )
-            )
-        }
-    }
-
     fun getVideoList(category: Int) = fire {
-        val videoListResult = VideoNewsNetwork.getVideoList(getUserToken(), category)
+        val videoListResult = VideoNewsNetwork.getVideoList(category, getUserToken())
         if ("success" == videoListResult.msg) {
             Result.success(videoListResult)
         } else {
@@ -68,6 +59,51 @@ object Repository {
         }
     }
 
+    fun getVideoCategory(token: String) = fire {
+        val categoryResult = VideoNewsNetwork.getVideoCategory(token)
+        if ("success" == categoryResult.msg) {
+            Result.success(categoryResult)
+        } else {
+            Result.failure(
+                RuntimeException(
+                    "response status msg is ${categoryResult.msg} code is ${categoryResult.code}"
+                )
+            )
+        }
+    }
+
+    fun getNewsList(requestParam: Map<String, Int>) = fire {
+        val newsResult = VideoNewsNetwork.getNewsList(requestParam, getUserToken())
+        if ("success" == newsResult.msg) {
+            Result.success(newsResult)
+        } else {
+            Result.failure(
+                RuntimeException(
+                    "response status msg is ${newsResult.msg} code is ${newsResult.code}"
+                )
+            )
+        }
+    }
+
+    fun getNewsThumb(newsId: Int, token: String) = fire {
+        val newsThumbResult = VideoNewsNetwork.getNewsThumb(newsId, token)
+        if ("success" == newsThumbResult.msg) {
+            Result.success(newsThumbResult)
+        } else {
+            Result.failure(
+                RuntimeException(
+                    "response status msg is ${newsThumbResult.msg} code is ${newsThumbResult.code}"
+                )
+            )
+        }
+    }
+
+    /**
+     * 通过高阶函数简化live data的异常处理
+     * @param context 协程上下文
+     * @param block 方法参数
+     * @return 封装好返回值的live data对象
+     */
     private fun <T> fire(
         context: CoroutineContext = Dispatchers.IO,
         block: suspend () -> Result<T>

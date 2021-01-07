@@ -3,10 +3,14 @@ package com.example.videonews.ui.video
 import androidx.lifecycle.LiveData
 import com.example.videonews.logic.Repository
 import com.example.videonews.logic.model.BaseResponse
-import com.example.videonews.logic.model.VideoModel
+import com.example.videonews.logic.model.Video
 import com.example.videonews.ui.base.BaseViewModel
 
-class VideoListViewModel : BaseViewModel<BaseResponse<List<VideoModel>>, VideoModel, Int>() {
+/**
+ * @author Miracle
+ * 视频列表viewModel
+ */
+class VideoListViewModel : BaseViewModel<BaseResponse<List<Video>>, Video, Int>() {
 
     /**
      * 当前播放的位置
@@ -18,6 +22,6 @@ class VideoListViewModel : BaseViewModel<BaseResponse<List<VideoModel>>, VideoMo
      */
     var mLastPos = mCurPos
 
-    override fun getData(param: Int): LiveData<Result<BaseResponse<List<VideoModel>>>> =
+    override fun getData(param: Int): LiveData<Result<BaseResponse<List<Video>>>> =
         Repository.getVideoList(param)
 }

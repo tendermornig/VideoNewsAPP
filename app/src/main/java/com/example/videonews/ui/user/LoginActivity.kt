@@ -10,6 +10,10 @@ import com.example.videonews.ui.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
 
+/**
+ * @author Miracle
+ * 登录界面
+ */
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
     private val viewModel by lazy {
@@ -44,6 +48,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         }
     }
 
+    /**
+     * 验证用户登录参数是否合法函数
+     * @param userAccount 用户账户
+     * @param userPwd 用户密码
+     * @return 验证结果
+     */
     private fun verificationLoginParam(
         userAccount: String,
         userPwd: String
