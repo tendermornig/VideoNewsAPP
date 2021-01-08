@@ -1,6 +1,6 @@
 package com.example.videonews.logic.network
 
-import com.example.videonews.logic.model.BaseResponse
+import com.example.videonews.base.BaseResponse
 import com.example.videonews.logic.model.Category
 import com.example.videonews.logic.model.Video
 import retrofit2.Call

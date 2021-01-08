@@ -1,7 +1,7 @@
-package com.example.videonews.logic.model
+package com.example.videonews.base
 
 /**
  * @author Miracle
- * 响应数据基础实体类
+ * 所有实体类的基类
  */
 data class BaseResponse<T>(val msg: String, val code: Int, val data: T)

@@ -15,7 +15,7 @@ import com.example.videonews.R
 import com.example.videonews.databinding.FragmentVideoListBinding
 import com.example.videonews.databinding.ItemVideoBinding
 import com.example.videonews.ui.NavigationActivity
-import com.example.videonews.ui.base.BaseFragment
+import com.example.videonews.base.BaseFragment
 
 /**
  * @author Miracle

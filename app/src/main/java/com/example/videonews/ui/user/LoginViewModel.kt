@@ -2,7 +2,7 @@ package com.example.videonews.ui.user
 
 import androidx.lifecycle.LiveData
 import com.example.videonews.logic.Repository
-import com.example.videonews.ui.base.BaseViewModel
+import com.example.videonews.base.BaseViewModel
 
 /**
  * @author Miracle

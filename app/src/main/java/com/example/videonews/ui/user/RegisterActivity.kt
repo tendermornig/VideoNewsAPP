@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.databinding.ActivityRegisterBinding
-import com.example.videonews.ui.base.ActivityCollector
-import com.example.videonews.ui.base.BaseActivity
+import com.example.videonews.base.ActivityCollector
+import com.example.videonews.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
 

@@ -5,8 +5,8 @@ import android.content.Intent
 import android.view.View
 import com.example.videonews.R
 import com.example.videonews.databinding.ActivityNavigationBinding
-import com.example.videonews.ui.base.ActivityCollector
-import com.example.videonews.ui.base.BaseActivity
+import com.example.videonews.base.ActivityCollector
+import com.example.videonews.base.BaseActivity
 import com.example.videonews.ui.news.NewsFragment
 import com.example.videonews.ui.user.UserFragment
 import com.example.videonews.ui.video.VideoFragment

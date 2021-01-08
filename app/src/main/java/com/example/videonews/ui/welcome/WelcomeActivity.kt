@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.databinding.ActivityWelcomeBinding
 import com.example.videonews.ui.NavigationActivity
-import com.example.videonews.ui.base.BaseActivity
+import com.example.videonews.base.BaseActivity
 import com.example.videonews.ui.user.LoginActivity
 import com.example.videonews.ui.user.RegisterActivity
 

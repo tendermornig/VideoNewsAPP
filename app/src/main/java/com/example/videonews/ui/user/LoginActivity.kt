@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.R
 import com.example.videonews.databinding.ActivityLoginBinding
 import com.example.videonews.ui.NavigationActivity
-import com.example.videonews.ui.base.BaseActivity
+import com.example.videonews.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
 

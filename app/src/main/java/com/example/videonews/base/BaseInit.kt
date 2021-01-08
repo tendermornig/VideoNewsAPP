@@ -1,4 +1,4 @@
-package com.example.videonews.ui.base
+package com.example.videonews.base
 
 /**
  * @author Miracle

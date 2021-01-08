@@ -2,9 +2,9 @@ package com.example.videonews.ui.video
 
 import androidx.lifecycle.LiveData
 import com.example.videonews.logic.Repository
-import com.example.videonews.logic.model.BaseResponse
+import com.example.videonews.base.BaseResponse
 import com.example.videonews.logic.model.Category
-import com.example.videonews.ui.base.BaseViewModel
+import com.example.videonews.base.BaseViewModel
 
 /**
  * @author Miracle

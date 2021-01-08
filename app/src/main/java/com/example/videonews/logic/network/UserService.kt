@@ -1,6 +1,6 @@
 package com.example.videonews.logic.network
 
-import com.example.videonews.logic.model.BaseResponse
+import com.example.videonews.base.BaseResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

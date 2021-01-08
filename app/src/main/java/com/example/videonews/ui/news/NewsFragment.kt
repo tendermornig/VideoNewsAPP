@@ -3,7 +3,7 @@ package com.example.videonews.ui.news
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.databinding.FragmentNewsBinding
-import com.example.videonews.ui.base.BaseFragment
+import com.example.videonews.base.BaseFragment
 import com.google.gson.Gson
 
 /**

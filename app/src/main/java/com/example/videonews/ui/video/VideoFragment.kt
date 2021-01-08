@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.videonews.databinding.FragmentVideoBinding
 import com.example.videonews.ui.NavigationActivity
-import com.example.videonews.ui.base.BaseFragment
+import com.example.videonews.base.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 /**
