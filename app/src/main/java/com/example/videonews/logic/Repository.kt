@@ -1,6 +1,7 @@
 package com.example.videonews.logic
 
 import androidx.lifecycle.liveData
+import com.example.videonews.logic.dao.NewsDao
 import com.example.videonews.logic.dao.UserDao
 import com.example.videonews.logic.network.VideoNewsNetwork
 import kotlinx.coroutines.Dispatchers
@@ -85,8 +86,8 @@ object Repository {
         }
     }
 
-    fun getNewsThumb(newsId: Int, token: String) = fire {
-        val newsThumbResult = VideoNewsNetwork.getNewsThumb(newsId, token)
+    fun getNewsThumb(newsId: Int) = fire {
+        val newsThumbResult = VideoNewsNetwork.getNewsThumb(newsId, getUserToken())
         if ("success" == newsThumbResult.msg) {
             Result.success(newsThumbResult)
         } else {
@@ -121,4 +122,8 @@ object Repository {
     fun getUserToken() = UserDao.getUserToken()
 
     fun clearUserToken() = UserDao.clearUserToken()
+
+    fun saveNewsLimit(limit: Int) = NewsDao.saveNewsLimit(limit)
+
+    fun getNewsLimit() = NewsDao.getNewsLimit()
 }

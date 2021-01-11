@@ -50,7 +50,7 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), BaseInit<T> 
      * @param dataLiveData LiveData
      * @param onRequestFinish 访问完成时的回调
      */
-    fun <T> setDataStatus(
+    fun <T> setLiveDataStatus(
         dataLiveData: LiveData<Result<T>>,
         onRequestFinish: (T?) -> Unit
     ) {

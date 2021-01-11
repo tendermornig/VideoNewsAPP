@@ -131,18 +131,14 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
     }
 
     override fun initData() {
+        setLiveDataStatus(viewModel.dataLiveData) {
+            viewModel.cacheData.addAll(it)
+            adapter.notifyItemRangeChanged(adapter.lastSize, viewModel.cacheData.size)
+            adapter.lastSize = viewModel.cacheData.size
+        }
         arguments?.let {
             val videoCategory = it.getInt(VIDEO_CATEGORY)
             viewModel.setRequestValue(videoCategory)
-        }
-        setDataStatus(viewModel.dataLiveData) {
-            if (it != null && it.code != 402) {
-                viewModel.cacheData.addAll(it.data)
-                adapter.notifyItemRangeChanged(adapter.lastSize, viewModel.cacheData.size)
-                adapter.lastSize = viewModel.cacheData.size
-            } else {
-                toReLogin(getString(R.string.user_token_expire_tip))
-            }
         }
     }
 

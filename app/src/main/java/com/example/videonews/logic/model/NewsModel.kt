@@ -19,4 +19,4 @@ data class News(
 /**
  * 新闻略缩图实体类
  */
-data class Thumb(val thumb: Int, val thumbUrl: Int, val newsId: Int) : Serializable
+data class Thumb(val thumbId: Int, val thumbUrl: String, val newsId: Int) : Serializable

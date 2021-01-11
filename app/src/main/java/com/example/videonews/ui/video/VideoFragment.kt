@@ -3,7 +3,6 @@ package com.example.videonews.ui.video
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.videonews.R
 import com.example.videonews.base.BaseFragment
 import com.example.videonews.databinding.FragmentVideoBinding
 import com.example.videonews.utils.Const
@@ -45,17 +44,12 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
     }
 
     override fun initData() {
-        viewModel.setRequestValue(viewModel.getUserToken())
-        setDataStatus(viewModel.dataLiveData) {
-            if (it != null && it.code != 402) {
-                viewModel.cacheData.clear()
-                viewModel.cacheData.addAll(it.data)
-                adapter.notifyDataSetChanged()
-            } else {
-                viewModel.clearUserToken()
-                toReLogin(getString(R.string.user_login_token_be_overdue_tip))
-            }
+        setLiveDataStatus(viewModel.dataLiveData) {
+            viewModel.cacheData.clear()
+            viewModel.cacheData.addAll(it)
+            adapter.notifyDataSetChanged()
         }
+        viewModel.setRequestValue(viewModel.getUserToken())
     }
 
     override fun onDetach() {

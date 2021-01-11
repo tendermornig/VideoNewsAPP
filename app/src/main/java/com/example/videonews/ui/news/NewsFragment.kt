@@ -3,6 +3,7 @@ package com.example.videonews.ui.news
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.base.BaseFragment
 import com.example.videonews.databinding.FragmentNewsBinding
+import com.example.videonews.utils.Const
 
 /**
  * @author Miracle
@@ -17,17 +18,29 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>() {
         ).get(NewsViewModel::class.java)
     }
 
+    private lateinit var adapter: NewsRvAdapter
+
     override fun initViewBinding() = FragmentNewsBinding.inflate(layoutInflater)
 
     override fun initView() {
-
+        adapter = NewsRvAdapter(viewModel.cacheData, this)
+        mBinding.rvNews.adapter = adapter
     }
 
     override fun initData() {
-        setDataStatus(viewModel.dataLiveData) {
-
+        setLiveDataStatus(viewModel.dataLiveData) {
+            with(viewModel.cacheData) {
+                clear()
+                addAll(it)
+            }
+            adapter.notifyDataSetChanged()
         }
-        viewModel.setRequestValue(mapOf("page" to 0, "limit" to 5))
+        viewModel.setRequestValue(
+            mapOf(
+                Const.PAGE to viewModel.page,
+                Const.LIMIT to viewModel.getNewsLimit()
+            )
+        )
     }
 
     companion object {

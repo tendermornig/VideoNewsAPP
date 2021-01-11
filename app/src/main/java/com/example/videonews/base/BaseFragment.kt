@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData
 import androidx.viewbinding.ViewBinding
 import com.dueeeke.videoplayer.player.VideoViewManager
 import com.example.videonews.R
+import com.example.videonews.logic.Repository
 import com.example.videonews.ui.welcome.WelcomeActivity
 import com.example.videonews.utils.showToast
 
@@ -51,14 +52,19 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), BaseInit<T> {
      * @param dataLiveData LiveData
      * @param onRequestFinish 访问完成时的回调
      */
-    fun <T> setDataStatus(
-        dataLiveData: LiveData<Result<T>>,
-        onRequestFinish: (T?) -> Unit
+    fun <T> setLiveDataStatus(
+        dataLiveData: LiveData<Result<BaseResponse<T>>>,
+        onRequestFinish: (T) -> Unit
     ) {
         dataLiveData.observe(this) {
             if (it.isSuccess) {
-                val dataList = it.getOrNull()
-                onRequestFinish(dataList)
+                val result = it.getOrNull()
+                if (result != null && result.code != 402) {
+                    onRequestFinish(result.data)
+                } else {
+                    Repository.clearUserToken()
+                    toReLogin(getString(R.string.user_login_token_be_overdue_tip))
+                }
             } else {
                 getString(R.string.bad_network_view_tip).showToast()
                 it.exceptionOrNull()?.printStackTrace()

@@ -41,7 +41,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
     }
 
     override fun initData() {
-        setDataStatus(viewModel.dataLiveData) {
+        setLiveDataStatus(viewModel.dataLiveData) {
             if (it != null && it) {
                 getString(R.string.register_success_tip).showToast()
                 ActivityCollector.remove(weakReference)

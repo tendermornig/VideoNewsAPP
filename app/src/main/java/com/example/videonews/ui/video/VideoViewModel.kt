@@ -1,10 +1,10 @@
 package com.example.videonews.ui.video
 
 import androidx.lifecycle.LiveData
-import com.example.videonews.logic.Repository
 import com.example.videonews.base.BaseResponse
-import com.example.videonews.logic.model.Category
 import com.example.videonews.base.BaseViewModel
+import com.example.videonews.logic.Repository
+import com.example.videonews.logic.model.Category
 
 /**
  * @author Miracle
@@ -17,6 +17,4 @@ class VideoViewModel :
         Repository.getVideoCategory(param)
 
     fun getUserToken() = Repository.getUserToken()
-
-    fun clearUserToken() = Repository.clearUserToken()
 }

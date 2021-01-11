@@ -39,7 +39,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     }
 
     override fun initData() {
-        setDataStatus(viewModel.dataLiveData) {
+        setLiveDataStatus(viewModel.dataLiveData) {
             if (it != null && "" != it) {
                 viewModel.saveUserToken(it)
                 NavigationActivity.start(this)

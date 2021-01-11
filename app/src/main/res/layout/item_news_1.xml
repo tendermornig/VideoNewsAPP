@@ -10,21 +10,22 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imgThumb"
         app:layout_constraintEnd_toStartOf="@+id/imgThumb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgThumb"
-        tools:text="《天外世界：果根险境》9月9日上架 游戏将支持Xbox Series X专属强化" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/full_names" />
 
     <ImageView
         android:id="@+id/imgThumb"
-        android:layout_width="110dp"
-        android:layout_height="65dp"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/news_thumb_img"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,7 @@
         tools:text="1评论" />
 
     <TextView
-        android:id="@+id/tvDate"
+        android:id="@+id/tv_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
