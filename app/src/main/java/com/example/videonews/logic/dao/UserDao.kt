@@ -3,6 +3,7 @@ package com.example.videonews.logic.dao
 import android.content.Context
 import androidx.core.content.edit
 import com.example.videonews.VideoNewsApplication
+import com.example.videonews.utils.Const
 
 /**
  * @author Miracle
@@ -15,14 +16,14 @@ object UserDao {
      * @return sharedPreferences实例
      */
     private fun sharedPreferences() = VideoNewsApplication.mContext
-        .getSharedPreferences("user", Context.MODE_PRIVATE)
+        .getSharedPreferences(Const.USER, Context.MODE_PRIVATE)
 
     /**
      * 保存用户登录token函数
      */
     fun saveUserToken(token: String) {
         sharedPreferences().edit {
-            putString("userToken", token)
+            putString(Const.USER_TOKEN, token)
         }
     }
 
@@ -30,7 +31,7 @@ object UserDao {
      * 获取用户登录token函数
      * @return 用户登录token
      */
-    fun getUserToken() = sharedPreferences().getString("userToken", "")!!
+    fun getUserToken() = sharedPreferences().getString(Const.USER_TOKEN, "")!!
 
     /**
      * 清空用户登录token函数

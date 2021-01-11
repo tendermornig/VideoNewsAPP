@@ -3,9 +3,10 @@ package com.example.videonews.ui.video
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.videonews.databinding.FragmentVideoBinding
-import com.example.videonews.ui.NavigationActivity
+import com.example.videonews.R
 import com.example.videonews.base.BaseFragment
+import com.example.videonews.databinding.FragmentVideoBinding
+import com.example.videonews.utils.Const
 import com.google.android.material.tabs.TabLayoutMediator
 
 /**
@@ -52,14 +53,14 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
                 adapter.notifyDataSetChanged()
             } else {
                 viewModel.clearUserToken()
-                toReLogin("用户登录已过期")
+                toReLogin(getString(R.string.user_login_token_be_overdue_tip))
             }
         }
     }
 
     override fun onDetach() {
         super.onDetach()
-        getVideoViewManager()?.releaseByTag(NavigationActivity.LIST)
+        getVideoViewManager()?.releaseByTag(Const.LIST)
     }
 
     companion object {

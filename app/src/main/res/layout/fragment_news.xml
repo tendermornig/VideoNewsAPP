@@ -21,6 +21,6 @@
         android:id="@+id/rvNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_news_1" />
+        tools:listitem="@layout/item_news_3" />
 
 </LinearLayout>

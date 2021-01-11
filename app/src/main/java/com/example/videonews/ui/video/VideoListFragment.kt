@@ -12,10 +12,11 @@ import com.dueeeke.videocontroller.component.*
 import com.dueeeke.videoplayer.player.AbstractPlayer
 import com.dueeeke.videoplayer.player.VideoView
 import com.example.videonews.R
+import com.example.videonews.base.BaseFragment
 import com.example.videonews.databinding.FragmentVideoListBinding
 import com.example.videonews.databinding.ItemVideoBinding
 import com.example.videonews.ui.NavigationActivity
-import com.example.videonews.base.BaseFragment
+import com.example.videonews.utils.Const
 
 /**
  * @author Miracle
@@ -170,7 +171,7 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding>() {
         removeViewFormParent(mVideoView)
         itemBinding.flPlayerContainer.addView(mVideoView, 0)
         //播放之前将VideoView添加到VideoViewManager以便在别的页面也能操作它
-        getVideoViewManager()?.add(mVideoView, NavigationActivity.LIST)
+        getVideoViewManager()?.add(mVideoView, Const.LIST)
         mVideoView.start()
         viewModel.mCurPos = position
     }

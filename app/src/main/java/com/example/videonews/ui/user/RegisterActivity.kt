@@ -3,9 +3,11 @@ package com.example.videonews.ui.user
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
-import com.example.videonews.databinding.ActivityRegisterBinding
+import com.example.videonews.R
 import com.example.videonews.base.ActivityCollector
 import com.example.videonews.base.BaseActivity
+import com.example.videonews.databinding.ActivityRegisterBinding
+import com.example.videonews.utils.Const
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
 
@@ -32,7 +34,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
             if (verificationRegisterParam(userAccount, userPwd, userTwoPwd)) {
                 val encryptionUserPwd = encoderByMd5(userPwd)
                 val registerParam =
-                    mapOf("userAccount" to userAccount, "userPassword" to encryptionUserPwd)
+                    mapOf(Const.USER_ACCOUNT to userAccount, Const.USER_PASSWORD to encryptionUserPwd)
                 viewModel.setRequestValue(registerParam)
             }
         }
@@ -41,9 +43,9 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
     override fun initData() {
         setDataStatus(viewModel.dataLiveData) {
             if (it != null && it) {
-                "注册成功".showToast()
+                getString(R.string.register_success_tip).showToast()
                 ActivityCollector.remove(weakReference)
-            } else "账号已存在请修改账号".showToast()
+            } else getString(R.string.account_duplication_tip).showToast()
         }
     }
 
@@ -60,31 +62,31 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>() {
         userTwoPwd: String
     ): Boolean {
         if (userAccount.isEmpty()) {
-            "账号不可为空".showToast()
+            getString(R.string.account_null_tip).showToast()
             return false
         }
         if (userAccount.length != 10) {
-            "账号长度应为10位".showToast()
+            getString(R.string.account_length_error_tip).showToast()
             return false
         }
         if (userPwd.isEmpty()) {
-            "密码不可为空".showToast()
+            getString(R.string.pwd_null_tip).showToast()
             return false
         }
         if (userPwd.length < 9) {
-            "密码长度应大于或等于10位".showToast()
+            getString(R.string.pwd_length_error_tip).showToast()
             return false
         }
         if (userTwoPwd.isEmpty()) {
-            "重复密码不可为空".showToast()
+            getString(R.string.two_pwd_null_tip).showToast()
             return false
         }
         if (userTwoPwd.length < 9) {
-            "重复密码长度应大于或等于10位".showToast()
+            getString(R.string.two_pwd_length_error_tip).showToast()
             return false
         }
         if (userPwd != userTwoPwd) {
-            "两次密码应该相同".showToast()
+            getString(R.string.two_different_password_tip).showToast()
             return false
         }
         return true

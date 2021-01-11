@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import com.example.videonews.R
+import com.example.videonews.base.BaseActivity
 import com.example.videonews.databinding.ActivityLoginBinding
 import com.example.videonews.ui.NavigationActivity
-import com.example.videonews.base.BaseActivity
 import com.example.videonews.utils.encoderByMd5
 import com.example.videonews.utils.showToast
 
@@ -43,7 +43,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
             if (it != null && "" != it) {
                 viewModel.saveUserToken(it)
                 NavigationActivity.start(this)
-                "登录成功".showToast()
+                getString(R.string.login_success_tip).showToast()
             } else getString(R.string.login_error_tip).showToast()
         }
     }
@@ -59,19 +59,19 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
         userPwd: String
     ): Boolean {
         if (userAccount.isEmpty()) {
-            "账号不可为空".showToast()
+            getString(R.string.account_null_tip).showToast()
             return false
         }
         if (userAccount.length != 10) {
-            "账号长度应为10位".showToast()
+            getString(R.string.account_length_error_tip).showToast()
             return false
         }
         if (userPwd.isEmpty()) {
-            "密码不可为空".showToast()
+            getString(R.string.pwd_null_tip).showToast()
             return false
         }
         if (userPwd.length < 9) {
-            "密码长度应大于或等于10位".showToast()
+            getString(R.string.pwd_length_error_tip).showToast()
             return false
         }
         return true

@@ -1,10 +1,8 @@
 package com.example.videonews.ui.news
 
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import com.example.videonews.databinding.FragmentNewsBinding
 import com.example.videonews.base.BaseFragment
-import com.google.gson.Gson
+import com.example.videonews.databinding.FragmentNewsBinding
 
 /**
  * @author Miracle
@@ -22,18 +20,17 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>() {
     override fun initViewBinding() = FragmentNewsBinding.inflate(layoutInflater)
 
     override fun initView() {
+
+    }
+
+    override fun initData() {
         setDataStatus(viewModel.dataLiveData) {
-            Log.d(TAG, "initView: ${Gson().toJson(it)}")
+
         }
         viewModel.setRequestValue(mapOf("page" to 0, "limit" to 5))
     }
 
-    override fun initData() {
-    }
-
     companion object {
-
-        private const val TAG = "NewsFragment"
 
         @JvmStatic
         fun newInstance() =

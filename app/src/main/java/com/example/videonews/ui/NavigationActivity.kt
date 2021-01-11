@@ -4,12 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import com.example.videonews.R
-import com.example.videonews.databinding.ActivityNavigationBinding
 import com.example.videonews.base.ActivityCollector
 import com.example.videonews.base.BaseActivity
+import com.example.videonews.databinding.ActivityNavigationBinding
 import com.example.videonews.ui.news.NewsFragment
 import com.example.videonews.ui.user.UserFragment
 import com.example.videonews.ui.video.VideoFragment
+import com.example.videonews.utils.Const
 
 /**
  * 导航界面
@@ -46,7 +47,7 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding>() {
             }
             if (mCurrentIndex != index) {
                 if (mCurrentIndex == 1) {
-                    getVideoViewManager().releaseByTag(LIST)
+                    getVideoViewManager().releaseByTag(Const.LIST)
                 }
                 val transaction = supportFragmentManager.beginTransaction()
                 val frag = mFragments[index]
@@ -75,18 +76,13 @@ class NavigationActivity : BaseActivity<ActivityNavigationBinding>() {
     }
 
     override fun onBackPressed() {
-        if (getVideoViewManager().onBackPress(LIST)) {
+        if (getVideoViewManager().onBackPress(Const.LIST)) {
             return
         }
         super.onBackPressed()
     }
 
     companion object {
-
-        /**
-         * 列表播放
-         */
-        const val LIST = "list"
 
         /**
          * 当前展示的选项位置

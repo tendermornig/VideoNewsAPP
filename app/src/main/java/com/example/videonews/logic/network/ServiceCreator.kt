@@ -1,5 +1,6 @@
 package com.example.videonews.logic.network
 
+import com.example.videonews.utils.Const
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,17 +11,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ServiceCreator {
 
     /**
-     * 基础url
-     */
-    private const val BASE_URL = "http://10.0.2.2:8080/VideoNews_war/api/"
-
-    /**
      * retrofit实例
      * url为基础url
      * 转换器为gson转换器
      */
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(Const.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
