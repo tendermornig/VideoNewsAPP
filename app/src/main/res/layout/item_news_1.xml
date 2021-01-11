@@ -5,43 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgThumb"
-        app:layout_constraintEnd_toStartOf="@+id/imgThumb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/full_names" />
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imgThumb"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/news_thumb_img"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgThumb"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/news_thumb_img"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imgHead"
         android:layout_width="16dp"
         android:layout_height="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/head_img"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvTitle"
-        app:layout_constraintTop_toBottomOf="@+id/imgThumb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll"
         tools:src="@tools:sample/avatars" />
 
     <TextView
